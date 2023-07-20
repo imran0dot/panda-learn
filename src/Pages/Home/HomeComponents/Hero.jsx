@@ -1,13 +1,24 @@
-import React from 'react';
+import { BiSearchAlt } from 'react-icons/bi'
+import '../Home.css'
 
 const Hero = () => {
     return (
-        <div className='min-w-fit py-10 text-center'>
+        <div className='text-center'>
 
-            <div className='w-5/12 mx-auto flex flex-col gap-10 my-20'>
-                <h1 className='text-5xl font-bold'>Totally Free Essay Database</h1>
+            <div className='bg-[#DEDEDE] py-10'>
+                <div className='w-5/12 mx-auto flex flex-col gap-10 my-20'>
+                    <h1 className='text-5xl font-bold'>Totally Free Essay Database</h1>
 
-                <p className='font-bold'>Get inspiration for your assignment from thousands of free essay examples, samples, topics and research papers.</p>
+                    <p className='font-bold'>Get inspiration for your assignment from thousands of free essay examples, samples, topics and research papers.</p>
+
+                    <label htmlFor="" className='relative flex items-center rounded-full overflow-hidden shadow-lg input input-bordered '>
+                        <input type="text" placeholder="Type here" className="w-full outline-none" />
+
+                        <div className=' absolute right-0 text-2xl bg-[#00988A] p-3 w-16 flex justify-center cursor-pointer text-white'>
+                            <BiSearchAlt />
+                        </div>
+                    </label>
+                </div>
             </div>
 
             <div className='bg-[#00988A] flex text-center justify-center items-center gap-4 py-7'>

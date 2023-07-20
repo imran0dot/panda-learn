@@ -2,7 +2,7 @@ import logoPng from '../../../assets/logo.png'
 
 const Logo = () => {
     return (
-        <img src={logoPng} alt="logo" width="100" />
+        <img src={logoPng} alt="logo" width="200" />
     );
 };
 
