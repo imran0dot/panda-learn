@@ -3,7 +3,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 
 const ReviewsSlider = () => {
@@ -14,16 +14,15 @@ const ReviewsSlider = () => {
                 slidesPerView={3}
                 loop={false}
                 spaceBetween={30}
-                navigation={true}
                 pagination={{
                     dynamicBullets: true,
                     clickable: true,
                 }}
                 autoplay={{
-                    delay: 2500,
+                    delay: 250000,
                     disableOnInteraction: false,
                   }}
-                modules={[Autoplay, Pagination, Navigation]}
+                modules={[Autoplay, Pagination]}
                 className="mySwiper"
             >
                 {
