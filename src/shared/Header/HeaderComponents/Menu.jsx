@@ -10,7 +10,7 @@ const Menu = () => {
     ]
 
     return (
-            <nav className='flex gap-4'>
+            <nav className='flex gap-4 justify-center items-center'>
                 {menuItems.map((x, i) => {
                     console.log(Object.keys(x).toString())
                     return (
@@ -19,6 +19,8 @@ const Menu = () => {
                         </AciveLink>
                     )
                 })}
+                <Link className='btn btn-outline rounded-full'>Enroll Now</Link>
+                <Link className='btn btn-outline rounded-full'>Login</Link>
             </nav>
     );
 };
