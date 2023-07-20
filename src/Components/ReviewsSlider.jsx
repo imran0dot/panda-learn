@@ -11,7 +11,17 @@ const ReviewsSlider = () => {
     return (
         <div>
             <Swiper
-                slidesPerView={3}
+            breakpoints={{
+                640:{
+                    slidesPerView: 1
+                },
+                768:{
+                    slidesPerView:2
+                },
+                900:{
+                    slidesPerView:3
+                }
+            }}
                 loop={false}
                 spaceBetween={30}
                 pagination={{

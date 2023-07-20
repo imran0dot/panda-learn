@@ -10,7 +10,7 @@ const Menu = () => {
     ]
 
     return (
-            <nav className='flex gap-4 justify-center items-center'>
+            <nav className='md:flex gap-4 justify-center items-center hidden'>
                 {menuItems.map((x, i) => {
                     return (
                         <AciveLink key={i} to={Object.values(x).toString()}>

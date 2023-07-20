@@ -11,7 +11,7 @@ const InfoBoard = () => {
                         <h3 className='text-3xl'>Save big on these popular extensions</h3>
                         <span className='cursor-pointer'>Browse Sales <AiOutlineArrowRight className='inline' /></span>
                     </div>
-                    <div className='grid grid-flow-col gap-3 text-center'>
+                    <div className='grid grid-cols-2 lg:grid-cols-3 gap-3 text-center'>
                         {
                             info.map((x, i) => {
                                 return (
