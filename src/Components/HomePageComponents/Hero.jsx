@@ -3,9 +3,8 @@ import { BiSearchAlt } from 'react-icons/bi'
 const Hero = () => {
     return (
         <div className='text-center'>
-
-            <div className='bg-[#DEDEDE] py-10'>
-                <div className='w-5/12 mx-auto flex flex-col gap-10 my-20'>
+            <div className='bg-[#DEDEDE] py-10 hero'>
+                <div className='w-5/12 mx-auto flex flex-col gap-10 p-20 bg-[#2E836F] bg-opacity-70 rounded-lg shadow-lg text-white'>
                     <h1 className='text-5xl font-bold'>Totally Free Essay Database</h1>
 
                     <p className='font-bold'>Get inspiration for your assignment from thousands of free essay examples, samples, topics and research papers.</p>
