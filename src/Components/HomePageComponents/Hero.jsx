@@ -1,5 +1,4 @@
 import { BiSearchAlt } from 'react-icons/bi'
-import '../Home.css'
 
 const Hero = () => {
     return (

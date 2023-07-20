@@ -1,5 +1,5 @@
+import Logo from '../../Components/Logo';
 import Fixedwidth from '../../Layouts/Fixedwidth';
-import Logo from './HeaderComponents/logo';
 import Menu from './HeaderComponents/menu';
 const Header = () => {
     return (
