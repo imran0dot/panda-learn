@@ -20,9 +20,11 @@ const Hero = () => {
                 </div>
             </div>
 
-            <div className='bg-[#00988A] flex flex-col md:flex-row text-center justify-center items-center gap-4 py-7'>
-                <h1 className='text-2xl md:text-3xl font-bold text-white'>German Bonanza: Unleash Your Linguistic Potential with Irresistible<span className='text-[#FBBB5B]'> Learning Offers </span></h1>
-                <button className='btn bg-white text-black rounded-full'>ENROLL NOW</button>
+            <div
+            className='bg-[#00988A] flex flex-col md:flex-row text-center justify-center items-center gap-4 py-7'>
+                    <h1 className='text-2xl md:text-3xl font-bold text-white'>German Bonanza: Unleash Your Linguistic Potential with Irresistible<span className='text-[#FBBB5B]'> Learning Offers </span></h1>
+
+                {/* <button className='btn bg-white text-black rounded-full'>ENROLL NOW</button> */}
             </div>
         </div>
     );

@@ -1,12 +1,13 @@
-
-import Hero from '../../Components/HomePageComponents/Hero';
-import Info from '../../Components/HomePageComponents/Info';
-import Review from '../../Components/HomePageComponents/Review';
+import Hero from '../../Components/Hero';
+import PopularInstractor from '../../Components/PopularInstractor';
+import Review from '../../Components/Review';
+import Info from '../../Components/Info';
 
 const Home = () => {
     return (
         <div>
             <Hero />
+            <PopularInstractor />
             <Info />
             <Review />
         </div>

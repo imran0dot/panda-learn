@@ -1,6 +1,6 @@
 import React from 'react';
-import ReviewsSlider from '../ReviewsSlider';
-import Fixedwidth from '../../Layouts/Fixedwidth';
+import ReviewsSlider from './ReviewsSlider';
+import Fixedwidth from '../Layouts/Fixedwidth';
 
 const Review = () => {
     return (
