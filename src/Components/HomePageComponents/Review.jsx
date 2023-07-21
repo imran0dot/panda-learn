@@ -6,7 +6,7 @@ const Review = () => {
     return (
         <div className='lg:p-20'>
             <Fixedwidth>
-                <h3 className='text-center text-3xl lg:text-6xl font-bold mb-10'>Look what our customers say!</h3>
+                <h3 className='text-center text-3xl lg:text-5xl font-bold mb-10'>Look what our students say!</h3>
                 <ReviewsSlider />
             </Fixedwidth>
         </div>

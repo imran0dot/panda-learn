@@ -9,29 +9,29 @@ const Info = () => {
         <div className='py-10'>
             <Fixedwidth>
                 <div className='flex flex-col gap-3'>
-                    <h2 className='text-4xl font-bold'>Oh yes, you really do want to register your domain name</h2>
-                    <p>Whether it’s for your blog, business, portfolio, or link in bio, buying your domain early is smart.</p>
+                    <h2 className='text-4xl font-bold'>Unrivaled Language Learning Excellence</h2>
+                    <p>Why Panda Learning Reigns Supreme</p>
 
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 py-10'>
                         <div className='p-7 shadow-sm flex flex-col gap-4 border duration-300 hover:shadow-lg'>
                             <img src={image1} alt="" />
-                            <h4 className='text-2xl font-bold'>Creators & influencers</h4>
-                            <p>Today it’s your Linktree. Tomorrow it’s your store. With a domain, your audience always knows where to find you off-platform.</p>
+                            <h4 className='text-2xl font-bold'>Expert Instructors</h4>
+                            <p>Native-speaking experts offer immersive and personalized language instruction for successful fluency.</p>
                         </div>
                         <div className='p-7 shadow-sm flex flex-col gap-4 border duration-300 hover:shadow-lg'>
                             <img src={image2} alt="" />
-                            <h4 className='text-2xl font-bold'>Creators & influencers</h4>
-                            <p>Today it’s your Linktree. Tomorrow it’s your store. With a domain, your audience always knows where to find you off-platform.</p>
+                            <h4 className='text-2xl font-bold'>Comprehensive Course Curriculum</h4>
+                            <p>Thoughtfully designed courses cover grammar, vocabulary, and culture for all proficiency levels.</p>
                         </div>
                         <div className='p-7 shadow-sm flex flex-col gap-4 border duration-300 hover:shadow-lg'>
                             <img src={image3} alt="" />
-                            <h4 className='text-2xl font-bold'>Creators & influencers</h4>
-                            <p>Today it’s your Linktree. Tomorrow it’s your store. With a domain, your audience always knows where to find you off-platform.</p>
+                            <h4 className='text-2xl font-bold'>Engaging Learning Platform</h4>
+                            <p>Interactive lessons, multimedia content, and language labs create enjoyable learning experiences.</p>
                         </div>
                         <div className='p-7 shadow-sm flex flex-col gap-4 border duration-300 hover:shadow-lg'>
                             <img src={image4} alt="" />
-                            <h4 className='text-2xl font-bold'>Creators & influencers</h4>
-                            <p>Today it’s your Linktree. Tomorrow it’s your store. With a domain, your audience always knows where to find you off-platform.</p>
+                            <h4 className='text-2xl font-bold'>Supportive Learning Community</h4>
+                            <p>Connect with diverse learners, practice with native speakers, and grow in a collaborative environment.</p>
                         </div>
                     </div>
                 </div>
