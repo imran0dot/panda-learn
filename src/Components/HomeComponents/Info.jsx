@@ -1,8 +1,8 @@
-import Fixedwidth from '../Layouts/Fixedwidth';
-import image1 from '../assets/imgs/Image1.png'
-import image2 from '../assets/imgs/Image2.png'
-import image3 from '../assets/imgs/Image3.png'
-import image4 from '../assets/imgs/Image4.png'
+import Fixedwidth from '../../Layouts/Fixedwidth';
+import image1 from '../../assets/imgs/Image1.png'
+import image2 from '../../assets/imgs/Image2.png'
+import image3 from '../../assets/imgs/Image3.png'
+import image4 from '../../assets/imgs/Image4.png'
 import InfoBoard from './InfoBoard';
 const Info = () => {
     return (

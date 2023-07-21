@@ -1,4 +1,4 @@
-import Fixedwidth from '../Layouts/Fixedwidth';
+import Fixedwidth from '../../Layouts/Fixedwidth';
 import { AiOutlineArrowRight } from 'react-icons/ai'
 
 const InfoBoard = () => {
