@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom';
 import ReactStars from "react-rating-stars-component";
 import Button from './Button';
 
 
 const ClassBox = ({ image }) => {
     return (
-        <Link
+        <div
             className='p-7 shadow-sm flex flex-col gap-2 border duration-300 hover:shadow-lg'>
             <img className='border' src={image} alt="" />
             <h4 className='text-2xl font-bold'>The Complete Python Bootcamp</h4>
@@ -21,7 +20,7 @@ const ClassBox = ({ image }) => {
                 <p className='font-bold'>$20.99 <s className=' font-thin '>$30.99</s></p>
             </div>
             <Button to="/">Enroll Now</Button>
-        </Link>
+        </div>
     );
 };
 
