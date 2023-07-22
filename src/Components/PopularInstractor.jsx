@@ -5,18 +5,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
+import Title from '../shared/sharedComponents/Title';
 
 const PopularInstractor = () => {
 
     const array = [1, 2, 3, 4, 5, 6]
     return (
-        <div className='py-10'>
+        <div className='py-10 bg-[#F0F9F5]'>
             <Fixedwidth>
-                <div>
-
-                    <h2 className='text-4xl font-bold'>Popular Instractors</h2>
-                    <p>Why Panda Learning Reigns Supreme</p>
-                </div>
+                <Title title="Popular Instractors" subTitle="Panda Learning plateform is knows for best instractor" align="center" />
                 <Swiper
                     loop={true}
                     slidesPerView={3}

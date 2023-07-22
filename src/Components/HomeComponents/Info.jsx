@@ -3,15 +3,14 @@ import image1 from '../../assets/imgs/Image1.png'
 import image2 from '../../assets/imgs/Image2.png'
 import image3 from '../../assets/imgs/Image3.png'
 import image4 from '../../assets/imgs/Image4.png'
+import Title from '../../shared/sharedComponents/Title';
 import InfoBoard from './InfoBoard';
 const Info = () => {
     return (
         <div className='py-10'>
             <Fixedwidth>
                 <div className='flex flex-col gap-3'>
-                    <h2 className='text-4xl font-bold'>Unrivaled Language Learning Excellence</h2>
-                    <p>Why Panda Learning Reigns Supreme</p>
-
+                    <Title title="Unrivaled Language Learning Excellence" subTitle="Why Panda Learning Reigns Supreme" />
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7 py-10'>
                         <div className='p-7 shadow-sm flex flex-col gap-4 border duration-300 hover:shadow-lg'>
                             <img src={image1} alt="" />
