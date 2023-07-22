@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 
 
 const Registration = ({ passwordType, setPasswordType, setFormControl }) => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = data => console.log(data);
 

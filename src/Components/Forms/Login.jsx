@@ -4,12 +4,21 @@ import useAuth from '../../Hooks/useAuth';
 import SubmitBtn from '../../shared/sharedComponents/SubmitBtn';
 
 const Login = ({ passwordType, setPasswordType, setFormControl }) => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { signIn, loading } = useAuth()
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { signIn, loading, setLoading, setUser } = useAuth()
+
+    // form handle 
     const onSubmit = (data) => {
         const { email, password } = data;
-        signIn(email, password);
+        signIn(email, password)
+            .then(userCredential =>
+                setUser(userCredential.user))
+            .catch(error => {
+                setLoading(false)
+                alert(error)
+            })
     };
+
     return (
         <form
             onSubmit={handleSubmit(onSubmit)}
@@ -50,7 +59,7 @@ const Login = ({ passwordType, setPasswordType, setFormControl }) => {
             <p>If you are new at here please <span
                 onClick={() => setFormControl(false)}
                 className='text-[#00988A] font-bold cursor-pointer'>registraton</span></p>
-                <SubmitBtn loading={loading}>Log in</SubmitBtn>
+            <SubmitBtn loading={loading}>Log in</SubmitBtn>
         </form >
     );
 };
