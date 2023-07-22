@@ -8,6 +8,7 @@ import Courses from './Pages/Courses/Courses';
 import Instractors from './Pages/Instractors/Instractors';
 import ContactUs from './Pages/Contact Us/ContactUs';
 import AboutUs from './Pages/About Us/AboutUs';
+import Dashboard from './Dashboard/Dashboard';
 
 const router = createBrowserRouter([
     {
@@ -37,7 +38,12 @@ const router = createBrowserRouter([
             path: "/login",
             element: <User />
         }]
-    },{
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard />
+    },
+    {
         path: "*",
         element: <Error />
     }
