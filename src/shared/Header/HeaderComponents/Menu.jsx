@@ -20,7 +20,7 @@ const Menu = ({mobileMenu}) => {
                     )
                 })}
                 <Link className='btn btn-outline rounded-full'>Enroll Now</Link>
-                <Link className='btn btn-outline rounded-full'>Login</Link>
+                <Link to="/login" className='btn btn-outline rounded-full'>Login</Link>
             </nav>
 
             <div className={`fixed bg-white w-8/12 flex justify-center z-10 lg:hidden h-full top-0 duration-300 ${mobileMenu? "left-0" : "-left-[100%]"}`}>
@@ -34,7 +34,9 @@ const Menu = ({mobileMenu}) => {
                         )
                     })}
                     <Link className='btn btn-outline rounded-full w-36'>Enroll Now</Link>
-                    <Link className='btn btn-outline rounded-full w-36'>Login</Link>
+                    <Link
+                    to="/login"
+                    className='btn btn-outline rounded-full w-36'>Login</Link>
                 </nav>
             </div>
         </div>
