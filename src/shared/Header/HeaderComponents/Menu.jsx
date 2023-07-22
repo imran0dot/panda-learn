@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
 import AciveLink from '../../../Components/AciveLink';
+import useAuth from '../../../Hooks/useAuth';
+import AccountMenu from './AccountMenu';
 
 const Menu = ({mobileMenu}) => {
     const menuItems = [
         { "Home": "/" },
-        { "Service": "/service" },
-        { "We Are": "/team" },
-        { "who we are": "/about us" },
+        { "courses": "/classes" },
+        { "Instractors": "/instractors" },
+        { "Contact us": "/contact-us" },
+        { "About us": "/about-us" },
     ]
 
     return (
@@ -20,7 +23,8 @@ const Menu = ({mobileMenu}) => {
                     )
                 })}
                 <Link className='btn btn-outline rounded-full'>Enroll Now</Link>
-                <Link to="/login" className='btn btn-outline rounded-full'>Login</Link>
+               <AccountMenu />
+                
             </nav>
 
             <div className={`fixed bg-white w-8/12 flex justify-center z-10 lg:hidden h-full top-0 duration-300 ${mobileMenu? "left-0" : "-left-[100%]"}`}>
