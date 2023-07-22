@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Title = ({ title, subTitle, align }) => {
     return (
         <div className={`text-${align} flex flex-col gap-3 my-7`}>
