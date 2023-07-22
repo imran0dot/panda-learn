@@ -11,7 +11,7 @@ const User = () => {
     return (
         <div className='py-20'>
             <Fixedwidth>
-                <div className='shadow-2xl p-10'>
+                <div className='shadow-2xl p-10 w-10/12 mx-auto'>
                     <Title title="Welcome" subTitle="Enter your details and join with us" align="center" />
                     <div className='grid md:grid-cols-2 gap-4 justify-center items-center'>
                             {
