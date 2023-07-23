@@ -13,7 +13,7 @@ const User = () => {
     const [formControl, setFormControl] = useState(true);
     const [passwordType, setPasswordType] = useState(false);
     const location = useLocation();
-    const path = location?.state?.from?.pathname;
+    const path = location?.state?.from?.pathname || "/";
     console.log(path);
     if(loading){
         return <Loading />

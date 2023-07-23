@@ -1,6 +1,6 @@
 const StudentMenu = () => {
     return (
-        <ul className="menu rounded-box w-full font-bold text-2xl">
+        <ul className="menu rounded-box w-full uppercase text-2xl [&>*:nth-child(n)]:border-b">
             <li>
                 <a>
 
