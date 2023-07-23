@@ -14,7 +14,6 @@ const User = () => {
     const [passwordType, setPasswordType] = useState(false);
     const location = useLocation();
     const path = location?.state?.from?.pathname || "/";
-    console.log(path);
     if(loading){
         return <Loading />
     }

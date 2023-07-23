@@ -15,7 +15,7 @@ const Sidebar = () => {
             </div>
             <div className="absolute bottom-0 left-0 w-full">
                 <ul
-                    className="menu m-3 rounded-md cursor-pointer bg-[#00988A] text-2xl text-center text-white ">
+                    className="menu m-3 rounded-md cursor-pointer bg-[#00988A] text-2xl text-center text-white p-0">
                     <LogoutBtn>Log Out</LogoutBtn>
                 </ul>
             </div>

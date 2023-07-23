@@ -9,29 +9,52 @@ import { toast } from 'react-hot-toast';
 
 
 const Registration = ({ passwordType, setPasswordType, setFormControl }) => {
-    const [imageText, setImageText] = useState("Upload Image")
-    const [imageUrl, setImageUrl] = useState("")
-    const { loading, createUser, updateUserProfile, setUser } = useAuth();
+    const [imageText, setImageText] = useState("Upload Image");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [isDisable, setisDisable] = useState(true);
+    const { createUser, updateUserProfile, setUser } = useAuth();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     //Watching state of image change
     const photoWatch = watch("photo");
+    const password = watch("password")
+    const confirmPassWatch = watch("confirmPassword");
+
+    // password not match error 
+    useEffect(() => {
+        if (password !== confirmPassWatch || confirmPassWatch == "") {
+            setisDisable(true)
+            if (confirmPassWatch == "") {
+                setError("")
+            } else {
+                setError("Passwords do not match. Please confirm again.")
+            }
+        } else {
+            setError("")
+            setisDisable(false)
+        }
+    }, [confirmPassWatch])
+
+    // image upload text change 
     useEffect(() => {
         setImageText(photoWatch ? photoWatch[0]?.name : "Upload Image")
     }, [photoWatch])
 
 
+
     const onSubmit = data => {
-        const { photo, name, email, password } = data;
+        setLoading(true);
+        const { photo, name, email, confirmPassword } = data;
         useUpload(photo[0]).then(url => {
-            createUser(email, password).then(userCredential => {
+            createUser(email, confirmPassword).then(userCredential => {
                 updateUserProfile(name, url).then(() => {
                     setUser(userCredential.user);
-                    toast.success("User Login SuccessFull")
+                    toast.success("User Login SuccessFull");
+                    setLoading(false);
                 })
             })
         });
-
     };
 
 
@@ -104,11 +127,23 @@ const Registration = ({ passwordType, setPasswordType, setFormControl }) => {
                     Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character $ ! % * ? &
                 </span>}
             </label>
+
+            <label>
+                <p>Confirm Password</p>
+                <input
+                    type={passwordType ?
+                        "text" : "password"}
+                    placeholder="Enter Here your email"
+                    className="input input-bordered w-full"
+                    {...register("confirmPassword", { required: true })} />
+                <p className='text-red-600'>{error}</p>
+            </label>
+
             <p>If you have already exist account please <span
                 onClick={() => setFormControl(true)}
                 className='text-[#00988A] font-bold cursor-pointer'>login</span></p>
 
-            <SubmitBtn loading={loading}>Registration</SubmitBtn>
+            <SubmitBtn isDisable={isDisable} loading={loading}>Registration</SubmitBtn>
         </form>
     );
 };

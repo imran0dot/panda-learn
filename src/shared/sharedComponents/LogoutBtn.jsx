@@ -22,9 +22,11 @@ const LogoutBtn = ({ children }) => {
         })
     }
     return (
-        <span onClick={() => handleLogOut()}>
+        <div
+        className='w-full h-fit p-3'
+        onClick={() => handleLogOut()}>
             {children}
-        </span>
+        </div>
     );
 };
 

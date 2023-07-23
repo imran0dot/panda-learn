@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import { useState } from 'react';
-import Swal from 'sweetalert2';
 import LogoutBtn from '../../sharedComponents/LogoutBtn';
 
 const AccountMenu = () => {
     const [showMenu, setShowMenu] = useState(false)
-    const {logOut, user } = useAuth();
-    
+    const { user } = useAuth();
 
     return (
         <div>
@@ -26,9 +24,9 @@ const AccountMenu = () => {
                                     to="/dashboard"
                                     className='w-full duration-150 hover:text-white hover:bg-[#00988A] inline-block p-3'>My Classes</Link>
                                 <Link
-                                    className='w-full duration-150 hover:text-white hover:bg-[#00988A] inline-block p-3'>
+                                    className='w-full duration-150 relative hover:text-white hover:bg-[#00988A] inline-block'>
                                         <LogoutBtn>Log Out</LogoutBtn>
-                                    </Link>
+                                </Link>
                             </div>
                         </div>
                     </div> : <Link to="/login" className='btn btn-outline rounded-full'>Login</Link>
