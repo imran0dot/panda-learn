@@ -6,6 +6,8 @@ import useAuth from '../../Hooks/useAuth';
 import { useEffect, useState } from 'react';
 import { useUpload } from '../../Hooks/useUpload';
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
+import { setRole } from '../../Hooks/useRole';
 
 
 const Registration = ({ passwordType, setPasswordType, setFormControl }) => {
@@ -48,7 +50,9 @@ const Registration = ({ passwordType, setPasswordType, setFormControl }) => {
         const { photo, name, email, confirmPassword } = data;
         useUpload(photo[0]).then(url => {
             createUser(email, confirmPassword).then(userCredential => {
+                
                 updateUserProfile(name, url).then(() => {
+                    setRole(userCredential.user)
                     setUser(userCredential.user);
                     toast.success("User Login SuccessFull");
                     setLoading(false);

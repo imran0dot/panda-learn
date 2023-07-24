@@ -4,7 +4,7 @@ import Registration from '../../Components/Forms/Registration';
 import Fixedwidth from '../../Layouts/Fixedwidth';
 import Title from '../../shared/sharedComponents/Title';
 import image from '../../assets/imgs/Image1.png'
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import Loading from '../../shared/sharedComponents/Loading';
 
