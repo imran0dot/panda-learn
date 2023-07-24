@@ -16,7 +16,7 @@ const AdminMenu = () => {
         },
         {
             name: 'Students',
-            url: "/",
+            url: "/dashboard/users",
         },
     ]
     return (

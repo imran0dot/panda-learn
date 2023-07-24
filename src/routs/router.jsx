@@ -9,6 +9,7 @@ import AboutUs from '../Pages/About Us/AboutUs';
 import User from '../Pages/UserLogin/User';
 import Dashboard from '../Dashboard/Dashboard';
 import PrivateRout from './PrivateRout';
+import Users from '../Dashboard/Pages/Users';
 
 const router = createBrowserRouter([
     {
@@ -41,8 +42,13 @@ const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <PrivateRout> <Dashboard /> </PrivateRout>
-       
+        element: <PrivateRout> <Dashboard /> </PrivateRout>,
+       children: [
+        {
+            path: "/dashboard/users",
+            element: <Users />
+        }
+       ]
     },
     {
         path: "*",

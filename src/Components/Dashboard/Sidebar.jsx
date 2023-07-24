@@ -8,7 +8,7 @@ import Logo from "../../shared/sharedComponents/Logo";
 const Sidebar = () => {
     const { user, userRole } = useAuth();
     return (
-        <div className="fixed top-0 bottom-0 w-[400px] bg-[#F0F9F5]">
+        <div className="absolute w-full h-[100vh] bg-[#F0F9F5]">
             <div className="flex flex-col justify-center items-center overflow-hidden my-5">
                 <Logo />
                 {/* <img src={user.photoURL} className="w-36 h-36 rounded-full object-cover" alt="" />

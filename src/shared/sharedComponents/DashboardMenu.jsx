@@ -5,10 +5,9 @@ const DashboardMenu = ({ children }) => {
         <div>
             <ul className="menu rounded-box w-full capitalize font-thin text-2xl [&>*:nth-child(n)]:border-b">
                 {
-                    children.map(items => {
-                        console.log(items);
+                    children.map((items, index) => {
                         return (
-                            <li key={items}  >
+                            <li key={index}  >
                                 <Link to={items.url} >{items.name}</Link>
                             </li>
                         )
