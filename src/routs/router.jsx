@@ -1,4 +1,3 @@
-import React from 'react';
 import { createBrowserRouter } from "react-router-dom";
 import App from '../App';
 import Home from '../Pages/Home/Home';
@@ -10,6 +9,7 @@ import User from '../Pages/UserLogin/User';
 import Dashboard from '../Dashboard/Dashboard';
 import PrivateRout from './PrivateRout';
 import Users from '../Dashboard/Pages/Users';
+import Error from '../Pages/Error/Error';
 
 const router = createBrowserRouter([
     {
@@ -46,7 +46,8 @@ const router = createBrowserRouter([
        children: [
         {
             path: "/dashboard/users",
-            element: <Users />
+            element: <Users />,
+            loader: () => fetch('http://localhost:3000/users')
         }
        ]
     },
