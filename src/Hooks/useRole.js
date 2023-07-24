@@ -20,8 +20,11 @@ export const setRole = (user, role) => {
 }
 
 
-export const getRole = (user) => {
-    const uri = `${import.meta.env.VITE_SERVERLINK}/users?email=${user?.email}`;
-
-    axios.get(uri).then(res => console.log(res));
+export const getRole = async (user) => {
+    const uri = `${import.meta.env.VITE_SERVERLINK}/users/${user?.email}`;
+    return new Promise((resolve, reject) => {
+        axios.get(uri)
+        .then(res => resolve(res.data))
+        .catch((err) => reject(err.message))
+    })
 }
