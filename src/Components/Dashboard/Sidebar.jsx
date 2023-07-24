@@ -10,9 +10,13 @@ const Sidebar = () => {
                 <img src={user.photoURL} className="w-36 h-36 rounded-full object-cover" alt="" />
                 <h4 className="capitalize text-left text-3xl py-2">{user.displayName} ({userRole})</h4>
             </div>
+
             <div>
-                <StudentMenu />
+                {!userRole === "Admin" || userRole == "studen" ? 
+                        <StudentMenu /> : ""
+                }
             </div>
+
             <div className="absolute bottom-0 left-0 w-full">
                 <ul
                     className="menu m-3 rounded-md cursor-pointer bg-[#00988A] text-2xl text-center text-white p-0">
