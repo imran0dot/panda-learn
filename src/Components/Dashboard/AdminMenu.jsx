@@ -1,27 +1,27 @@
 import DashboardMenu from "../../shared/sharedComponents/DashboardMenu";
 
-const StudentMenu = () => {
+const AdminMenu = () => {
     const menuItems = [
         {
-            name: 'Home',
-            to: "/home",
+            name: 'Dashboard',
+            to: "/dashboard",
         },
         {
-            name: 'Products',
+            name: 'All Course',
+            url: "/course",
+        },
+        {
+            name: 'Instractors',
             url: "/",
         },
         {
-            name: 'Services',
+            name: 'Students',
             url: "/",
         },
-        {
-            name: 'Contact',
-            url: "/",
-        }
-    ];
+    ]
     return (
         <DashboardMenu>{menuItems}</DashboardMenu>
     );
 };
 
-export default StudentMenu;
+export default AdminMenu;

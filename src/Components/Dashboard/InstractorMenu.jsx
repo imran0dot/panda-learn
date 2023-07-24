@@ -1,27 +1,27 @@
 import DashboardMenu from "../../shared/sharedComponents/DashboardMenu";
 
-const StudentMenu = () => {
+const InstractorMenu = () => {
     const menuItems = [
         {
-            name: 'Home',
+            name: 'dashboard',
             to: "/home",
         },
         {
-            name: 'Products',
+            name: 'My Classes',
             url: "/",
         },
         {
-            name: 'Services',
+            name: 'My Students',
             url: "/",
         },
         {
             name: 'Contact',
             url: "/",
         }
-    ];
+    ]
     return (
         <DashboardMenu>{menuItems}</DashboardMenu>
     );
 };
 
-export default StudentMenu;
+export default InstractorMenu;
