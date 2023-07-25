@@ -2,26 +2,13 @@ import { Link } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 import { useState } from 'react';
 import LogoutBtn from '../../sharedComponents/LogoutBtn';
-import { studentMenuItems } from '../../../Components/Dashboard/StudentMenu';
-import { adminMenuItems } from '../../../Components/Dashboard/AdminMenu';
-import { instractorsMenuItems } from '../../../Components/Dashboard/InstractorMenu';
-import { useEffect } from 'react';
+import useUserMenu from '../../../Hooks/useUserMenu';
 
 const AccountMenu = () => {
     const [showMenu, setShowMenu] = useState(false)
-    const [menuItems, setMenuItems] = useState([]);
-    const { userRole } = useAuth();
-    console.log(userRole);
     const { user } = useAuth();
-    const studentMenu = studentMenuItems;
-    const adminMenu = adminMenuItems;
-    const instractorsMenu = instractorsMenuItems;
+    const menuItems = useUserMenu();
 
-    useEffect(() => {
-        { userRole == "Student" && setMenuItems(studentMenu) }
-        { userRole == "Instractor" && setMenuItems(instractorsMenu) }
-        { userRole == "Admin" && setMenuItems(adminMenu) }
-    }, [])
 
     return (
         <div>

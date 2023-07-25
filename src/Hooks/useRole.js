@@ -1,14 +1,15 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-export const setRole = async(user, role) => {
+export const setRole = async (user, address) => {
     try {
         const uri = `${import.meta.env.VITE_SERVERLINK}/user-role?email=${user?.email}`
         const setData = {
             name: user?.displayName,
             image: user?.photoURL,
             email: user?.email,
-            role: role || "student",
+            address,
+            role: "student",
         }
 
         axios.put(uri, setData, {
@@ -18,7 +19,7 @@ export const setRole = async(user, role) => {
         }).then(() => {
             toast.success("user has been added on DB")
         })
-    } catch(error) {
+    } catch (error) {
         console.log(error);
     }
 

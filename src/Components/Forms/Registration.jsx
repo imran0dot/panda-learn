@@ -47,12 +47,12 @@ const Registration = ({ passwordType, setPasswordType, setFormControl }) => {
 
     const onSubmit = data => {
         setLoading(true);
-        const { photo, name, email, confirmPassword } = data;
+        const { photo, name, email, confirmPassword, address } = data;
         useUpload(photo[0]).then(url => {
             createUser(email, confirmPassword).then(userCredential => {
-                
+
                 updateUserProfile(name, url).then(() => {
-                    setRole(userCredential.user)
+                    setRole(userCredential.user, address)
                     setUser(userCredential.user);
                     toast.success("User Login SuccessFull");
                     setLoading(false);
@@ -98,6 +98,15 @@ const Registration = ({ passwordType, setPasswordType, setFormControl }) => {
                     placeholder="Enter Here your email"
                     className="input input-bordered w-full"
                     {...register("email", { required: true })} />
+                {errors.email && <span className='text-red-800'>This field is required</span>}
+            </label>
+            <label>
+                <p>Address</p>
+                <input
+                    type='text'
+                    placeholder="Enter Here your address"
+                    className="input input-bordered w-full"
+                    {...register("address", { required: true })} />
                 {errors.email && <span className='text-red-800'>This field is required</span>}
             </label>
 

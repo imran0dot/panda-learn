@@ -1,12 +1,8 @@
-import StudentMenu from "./StudentMenu";
-import useAuth from "../../Hooks/useAuth";
 import LogoutBtn from "../../shared/sharedComponents/LogoutBtn";
-import AdminMenu from "./AdminMenu";
-import InstractorMenu from "./InstractorMenu";
 import Logo from "../../shared/sharedComponents/Logo";
+import DashboardMenu from "../../shared/sharedComponents/DashboardMenu";
 
 const Sidebar = () => {
-    const { user, userRole } = useAuth();
     return (
         <div className="absolute w-full h-[100vh] bg-[#F0F9F5]">
             <div className="flex flex-col justify-center items-center overflow-hidden my-5">
@@ -16,9 +12,7 @@ const Sidebar = () => {
             </div>
 
             <div>
-                {userRole === "Admin" && <AdminMenu />}
-                {userRole === "Instractor" && <InstractorMenu />}
-                {userRole === "Student" && <StudentMenu />}
+                <DashboardMenu />
             </div>
 
             <div className="absolute bottom-0 left-0 w-full">
