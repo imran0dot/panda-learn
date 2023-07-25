@@ -1,8 +1,4 @@
 import { Link } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
-import { useState } from "react";
-import { adminMenuItems, instractorsMenuItems, studentMenuItems } from "../../Components/Dashboard/menuItems";
-import { useEffect } from "react";
 import useUserMenu from "../../Hooks/useUserMenu";
 
 const DashboardMenu = () => {

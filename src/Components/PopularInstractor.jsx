@@ -6,10 +6,16 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import Title from '../shared/sharedComponents/Title';
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const PopularInstractor = () => {
-
-    const array = [1, 2, 3, 4, 5, 6]
+    const [instructors, setInstructors] = useState([]);
+    const uri = `${import.meta.env.VITE_SERVERLINK}/user/role/student`
+    useEffect(() => {
+        axios.get(uri).then(res => setInstructors(res.data))
+    }, [])
     return (
         <div className='py-10 bg-[#F0F9F5]'>
             <Fixedwidth>
@@ -26,10 +32,10 @@ const PopularInstractor = () => {
                 >
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                         {
-                            array.map(x => {
+                            instructors.map((instructor, index) => {
                                 return (
-                                    <SwiperSlide key={x}>
-                                        <InstractorCard image={image} />
+                                    <SwiperSlide key={index}>
+                                        <InstractorCard instructor={instructor} image={image} />
                                     </SwiperSlide>
                                 )
                             })
