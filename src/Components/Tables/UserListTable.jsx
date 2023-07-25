@@ -1,10 +1,11 @@
+import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import { useDelete } from "../../Hooks/useDelete";
+import axios from "axios";
 
-const Table = ({ userData }) => {
+const Table = ({ userData, isLoading, refetch, handleDelete }) => {
     const currentUser = useAuth();
     return (
-        <div>
+        isLoading ? <div>Loding</div> : <div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     <thead>
@@ -19,7 +20,7 @@ const Table = ({ userData }) => {
                     <tbody>
                         {
                             userData.map((data, index) => {
-                                const {_id, address, email, image, name, role} = data;
+                                const { _id, address, email, image, name, role } = data;
                                 return (
                                     <tr className="" key={index}>
                                         <td>
@@ -37,10 +38,10 @@ const Table = ({ userData }) => {
                                         </td>
                                         <td>{address}</td>
                                         <th className="flex gap-3 items-center justify-center">
-                                            <button 
-                                            onClick={() => {useDelete(_id)}}
-                                            disabled={currentUser.user.email === email}
-                                            className="btn btn-ghost btn-xs bg-red-500">delete</button>
+                                            <button
+                                                onClick={() => { handleDelete(_id) }}
+                                                disabled={currentUser.user.email === email}
+                                                className="btn btn-ghost btn-xs bg-red-500">delete</button>
                                             <button className="btn btn-ghost btn-xs bg-green-500">edit</button>
                                         </th>
                                     </tr>

@@ -49,7 +49,6 @@ const router = createBrowserRouter([
         {
             path: "/dashboard/users",
             element: <Users />,
-            loader: () => fetch('http://localhost:3000/users')
         },
         {
             path: "/dashboard/instructors",
