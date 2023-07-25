@@ -1,8 +1,7 @@
-import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
+import { useDelete } from "../../Hooks/useDelete";
 
 const Table = ({ userData }) => {
-    const [isDisable, setIsDisable] = useState(false)
     const currentUser = useAuth();
     return (
         <div>
@@ -39,6 +38,7 @@ const Table = ({ userData }) => {
                                         <td>{address}</td>
                                         <th className="flex gap-3 items-center justify-center">
                                             <button 
+                                            onClick={() => {useDelete(_id)}}
                                             disabled={currentUser.user.email === email}
                                             className="btn btn-ghost btn-xs bg-red-500">delete</button>
                                             <button className="btn btn-ghost btn-xs bg-green-500">edit</button>
