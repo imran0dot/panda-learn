@@ -30,7 +30,7 @@ export const getRole = async (user) => {
     const uri = `${import.meta.env.VITE_SERVERLINK}/users/${user?.email}`;
     return new Promise((resolve, reject) => {
         axios.get(uri)
-            .then(res => resolve(res.data))
+            .then(res => resolve(res.data.role))
             .catch((err) => reject(err.message))
     })
 }

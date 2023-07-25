@@ -6,15 +6,15 @@ import { useState } from 'react';
 const useUserMenu = () => {
     const { userRole } = useAuth();
     const [menuItems, setMenuItems] = useState([]);
-
     const studentMenu = studentMenuItems;
     const adminMenu = adminMenuItems;
     const instractorsMenu = instractorsMenuItems;
 
     useEffect(() => {
+        { !userRole == true && setMenuItems(studentMenu) }
         { userRole == "student" && setMenuItems(studentMenu) }
-        { userRole == "Instractor" && setMenuItems(instractorsMenu) }
-        { userRole == "Admin" && setMenuItems(adminMenu) }
+        { userRole == "instructor" && setMenuItems(instractorsMenu) }
+        { userRole == "admin" && setMenuItems(adminMenu) }
     }, [userRole])
 
     return menuItems

@@ -1,5 +1,4 @@
 import Fixedwidth from '../Layouts/Fixedwidth';
-import image from '../assets/imgs/Image1.png'
 import InstractorCard from './HomeComponents/InstractorCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -35,7 +34,7 @@ const PopularInstractor = () => {
                             instructors.map((instructor, index) => {
                                 return (
                                     <SwiperSlide key={index}>
-                                        <InstractorCard instructor={instructor} image={image} />
+                                        <InstractorCard instructor={instructor} />
                                     </SwiperSlide>
                                 )
                             })
