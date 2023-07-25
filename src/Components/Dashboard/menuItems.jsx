@@ -47,7 +47,7 @@ const adminMenuItems = [
     },
     {
         name: 'Instractors',
-        url: "/instracots",
+        url: "/dashboard/instructors",
     },
     {
         name: 'Students',

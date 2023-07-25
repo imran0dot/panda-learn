@@ -1,11 +1,11 @@
 import { useLoaderData } from 'react-router-dom';
-import Table from '../../shared/sharedComponents/table';
+import UserListTable from '../../Components/Tables/UserListTable'
 
 const Users = () => {
     const userData = useLoaderData();
     return (
         <div>
-            <Table data={userData} />
+            <UserListTable userData={userData} />
         </div>
     );
 };

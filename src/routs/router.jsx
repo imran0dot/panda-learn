@@ -10,6 +10,8 @@ import Dashboard from '../Dashboard/Dashboard';
 import PrivateRout from './PrivateRout';
 import Users from '../Dashboard/Pages/Users';
 import Error from '../Pages/Error/Error';
+import Instructors from "../Dashboard/Pages/Instructors";
+
 
 const router = createBrowserRouter([
     {
@@ -48,6 +50,12 @@ const router = createBrowserRouter([
             path: "/dashboard/users",
             element: <Users />,
             loader: () => fetch('http://localhost:3000/users')
+        },
+        {
+            path: "/dashboard/instructors",
+            element: <Instructors />,
+            loader: () => fetch(`${import.meta.env.VITE_SERVERLINK}/users/role/instructors`)
+
         }
        ]
     },
