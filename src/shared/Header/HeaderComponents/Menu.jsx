@@ -4,7 +4,6 @@ import useAuth from '../../../Hooks/useAuth';
 import AccountMenu from './AccountMenu';
 
 const Menu = ({ mobileMenu }) => {
-
     const menuItems = [
         {
             name: 'Home',
