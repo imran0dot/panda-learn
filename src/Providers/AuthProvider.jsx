@@ -62,6 +62,11 @@ const AuthProvider = ({ children }) => {
             getRole(currentUser).then((res) => {
                 setUserRole(res)
             })
+            // set token at loacal storage
+            if(currentUser?.email){
+                axios.post(`${import.meta.env.VITE_SERVERLINK}/jwt`)
+                .then(res => localStorage.setItem("verify_token", res.data));
+            }
             setLoading(false)
         })
         return () => {

@@ -4,8 +4,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const Users = () => {
-    const { isLoading, data, refetch } = GetUsers();
-    const userData = data?.data
+    const { isLoading, data, refetch, } = GetUsers();
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -36,7 +35,7 @@ const Users = () => {
 
     return (
         <div>
-            <UserListTable refetch={refetch} isLoading={isLoading} userData={userData} handleDelete={handleDelete} />
+            <UserListTable refetch={refetch} isLoading={isLoading} userData={data} handleDelete={handleDelete} />
         </div>
     );
 };
