@@ -12,6 +12,7 @@ import {
     updateProfile,
 } from 'firebase/auth'
 import { getRole } from '../Hooks/useRole.js'
+import axios from 'axios'
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)

@@ -1,6 +1,4 @@
-import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import axios from "axios";
 
 const Table = ({ userData, isLoading, refetch, handleDelete }) => {
     const currentUser = useAuth();
@@ -19,7 +17,7 @@ const Table = ({ userData, isLoading, refetch, handleDelete }) => {
 
                     <tbody>
                         {
-                            userData.map((data, index) => {
+                            userData?.map((data, index) => {
                                 const { _id, address, email, image, name, role } = data;
                                 return (
                                     <tr className="" key={index}>

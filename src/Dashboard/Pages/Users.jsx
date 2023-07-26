@@ -1,7 +1,5 @@
 import GetUsers from "../../shared/sharedComponents/GetUsers";
 import UserListTable from "../../Components/Tables/UserListTable"
-import { useState } from "react";
-import { useEffect } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -22,7 +20,8 @@ const Users = () => {
             if (result.isConfirmed) {
                 axios.delete(`${import.meta.env.VITE_SERVERLINK}/user/remove/${id}`)
                     .then(res => {
-                        if (res.data.deletedCount < 0) {
+                        if (res.data.deletedCount > 0) {
+                            refetch();
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',

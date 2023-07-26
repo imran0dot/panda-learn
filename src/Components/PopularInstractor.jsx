@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 const PopularInstractor = () => {
     const [instructors, setInstructors] = useState([]);
-    const uri = `${import.meta.env.VITE_SERVERLINK}/user/role/student`
+    const uri = `${import.meta.env.VITE_SERVERLINK}/users/role/admin`
     useEffect(() => {
         axios.get(uri).then(res => setInstructors(res.data))
     }, [])
