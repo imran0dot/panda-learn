@@ -46,6 +46,10 @@ const adminMenuItems = [
         url: "/course",
     },
     {
+        name: "Add Course",
+        url: "/dashboard/add-new-course"
+    },
+    {
         name: 'Instractors',
         url: "/dashboard/instructors",
     },

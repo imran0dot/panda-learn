@@ -2,7 +2,6 @@ import { BsEyeSlashFill, BsEyeFill } from 'react-icons/bs'
 import { useForm } from "react-hook-form";
 import useAuth from '../../Hooks/useAuth';
 import SubmitBtn from '../../shared/sharedComponents/SubmitBtn';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
 const Login = ({ passwordType, setPasswordType, setFormControl }) => {

@@ -11,6 +11,7 @@ import PrivateRout from './PrivateRout';
 import Users from '../Dashboard/Pages/Users';
 import Error from '../Pages/Error/Error';
 import Instructors from "../Dashboard/Pages/Instructors";
+import AddCourse from "../Dashboard/Pages/AddCourse";
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             element: <Instructors />,
             loader: () => fetch(`${import.meta.env.VITE_SERVERLINK}/users/role/instructors`)
 
+        },
+        {
+            path: "/dashboard/add-new-course",
+            element: <AddCourse />,
         }
        ]
     },
