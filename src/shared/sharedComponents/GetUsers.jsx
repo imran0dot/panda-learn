@@ -4,17 +4,16 @@ import useAuth from "../../Hooks/useAuth";
 
 const GetUsers = () => {
     const { user } = useAuth();
-
     const { isLoading, data, refetch } = useQuery({
         queryKey: ["users", user?.email],
         queryFn: async () => {
-          const token = 'your_bearer_token_here';
+          const token = localStorage.getItem("verify_token");
       
           try {
             const response = await axios(`${import.meta.env.VITE_SERVERLINK}/users`, {
               headers: {
                 'Authorization': `Bearer ${token}`
-              }
+              },
             });
                   return response.data;
           } catch (error) {

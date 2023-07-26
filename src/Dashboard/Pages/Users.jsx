@@ -5,7 +5,6 @@ import axios from "axios";
 
 const Users = () => {
     const { isLoading, data, refetch, } = GetUsers();
-
     const handleDelete = (id) => {
         Swal.fire({
             title: 'Are you sure?',

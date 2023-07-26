@@ -64,7 +64,11 @@ const AuthProvider = ({ children }) => {
             })
             // set token at loacal storage
             if(currentUser?.email){
-                axios.post(`${import.meta.env.VITE_SERVERLINK}/jwt`)
+                const bodyData = {
+                    name: currentUser.displayName,
+                    email: currentUser.email,
+                }
+                axios.post(`${import.meta.env.VITE_SERVERLINK}/jwt`, bodyData)
                 .then(res => localStorage.setItem("verify_token", res.data));
             }
             setLoading(false)
