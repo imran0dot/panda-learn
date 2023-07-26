@@ -18,6 +18,7 @@ const AddCourseForm = () => {
     } = useForm()
 
     const onSubmit = (data) => {
+        setLoding(!loading)
         console.log(data);
     }
 

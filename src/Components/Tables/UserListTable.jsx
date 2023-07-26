@@ -1,6 +1,6 @@
 import useAuth from "../../Hooks/useAuth";
 
-const Table = ({ userData, isLoading, refetch, handleDelete }) => {
+const Table = ({ userData, isLoading, refetch, handleDelete, handleEdit }) => {
     const currentUser = useAuth();
     return (
         isLoading ? <div>Loding</div> : <div>
@@ -40,7 +40,9 @@ const Table = ({ userData, isLoading, refetch, handleDelete }) => {
                                                 onClick={() => { handleDelete(_id) }}
                                                 disabled={currentUser.user.email === email}
                                                 className="btn btn-ghost btn-xs bg-red-500">delete</button>
-                                            <button className="btn btn-ghost btn-xs bg-green-500">edit</button>
+                                            <button 
+                                            onClick={() => {handleEdit(_id)}}
+                                            className="btn btn-ghost btn-xs bg-green-500">edit</button>
                                         </th>
                                     </tr>
                                 )

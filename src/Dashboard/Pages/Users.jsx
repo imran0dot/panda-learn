@@ -31,10 +31,46 @@ const Users = () => {
         })
     }
 
+    const handleEdit = (id) => {
+        const uri = `${import.meta.env.VITE_SERVERLINK}/role/${id}`
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonColor: '#00988A',
+            cancelButtonColor: '#34947D',
+            confirmButtonText: 'Make Instructor',
+            denyButtonText: `Make Instructor`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                console.log(uri)
+                axios.patch(uri, {role: "instructor"})
+                .then(res => {
+                    if(res.data.modifiedCount > 0){
+                        Swal.fire("Saved! as a Instructor")
+                        refetch();
+                    }
+                });
+
+            } else if (result.isDenied) {
+                Swal.fire("Saved! as a Student")
+            }
+            else{
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+    }
+
 
     return (
         <div>
-            <UserListTable refetch={refetch} isLoading={isLoading} userData={data} handleDelete={handleDelete} />
+            <UserListTable 
+            refetch={refetch} 
+            isLoading={isLoading} 
+            userData={data} 
+            handleDelete={handleDelete}
+            handleEdit={handleEdit} />
         </div>
     );
 };
