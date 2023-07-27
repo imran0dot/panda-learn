@@ -40,23 +40,36 @@ const Users = () => {
             confirmButtonColor: '#00988A',
             cancelButtonColor: '#34947D',
             confirmButtonText: 'Make Instructor',
-            denyButtonText: `Make Instructor`,
+            denyButtonText: `Make Admin`,
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                console.log(uri)
-                axios.patch(uri, {role: "instructor"})
-                .then(res => {
-                    if(res.data.modifiedCount > 0){
-                        Swal.fire("Saved! as a Instructor")
-                        refetch();
+                axios.patch(uri, { role: "instructor" }, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("verify_token")}`
                     }
-                });
+                })
+                    .then(res => {
+                        if (res.data.modifiedCount > 0) {
+                            Swal.fire("Saved! as a Instructor")
+                            refetch();
+                        }
+                    });
 
             } else if (result.isDenied) {
-                Swal.fire("Saved! as a Student")
+                axios.patch(uri, { role: "admin" }, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem("verify_token")}`
+                    }
+                })
+                    .then(res => {
+                        if (res.data.modifiedCount > 0) {
+                            Swal.fire("Saved! as a Admin")
+                            refetch();
+                        }
+                    });
             }
-            else{
+            else {
                 Swal.fire('Changes are not saved', '', 'info')
             }
         })
@@ -65,12 +78,12 @@ const Users = () => {
 
     return (
         <div>
-            <UserListTable 
-            refetch={refetch} 
-            isLoading={isLoading} 
-            userData={data} 
-            handleDelete={handleDelete}
-            handleEdit={handleEdit} />
+            <UserListTable
+                refetch={refetch}
+                isLoading={isLoading}
+                userData={data}
+                handleDelete={handleDelete}
+                handleEdit={handleEdit} />
         </div>
     );
 };

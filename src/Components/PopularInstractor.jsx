@@ -11,14 +11,14 @@ import { useEffect } from 'react';
 
 const PopularInstractor = () => {
     const [instructors, setInstructors] = useState([]);
-    const uri = `${import.meta.env.VITE_SERVERLINK}/users/role/admin`
+    const uri = `${import.meta.env.VITE_SERVERLINK}/users/role/instructor`
     useEffect(() => {
         axios.get(uri).then(res => setInstructors(res.data))
     }, [])
     return (
         <div className='py-10 bg-[#F0F9F5]'>
             <Fixedwidth>
-                <Title title="Popular Instractors" subTitle="Panda Learning plateform is knows for best instractor" align="center" />
+                <Title title="Popular Instructors" subTitle="Panda Learning plateform is knows for best instractor" align="center" />
                 <Swiper
                     loop={true}
                     slidesPerView={3}
