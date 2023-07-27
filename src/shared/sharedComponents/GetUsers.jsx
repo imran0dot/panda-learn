@@ -10,7 +10,7 @@ const GetUsers = () => {
           const token = localStorage.getItem("verify_token");
       
           try {
-            const response = await axios(`${import.meta.env.VITE_SERVERLINK}/users`, {
+            const response = await axios(`/users`, {
               headers: {
                 'Authorization': `Bearer ${token}`
               },

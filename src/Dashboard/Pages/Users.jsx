@@ -16,7 +16,7 @@ const Users = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`${import.meta.env.VITE_SERVERLINK}/user/remove/${id}`)
+                axios.delete(`/user/remove/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
@@ -32,7 +32,6 @@ const Users = () => {
     }
 
     const handleEdit = (id) => {
-        const uri = `${import.meta.env.VITE_SERVERLINK}/role/${id}`
         Swal.fire({
             title: 'Do you want to save the changes?',
             showDenyButton: true,
@@ -44,7 +43,7 @@ const Users = () => {
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                axios.patch(uri, { role: "instructor" }, {
+                axios.patch(`/role/${id}`, { role: "instructor" }, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem("verify_token")}`
                     }
@@ -57,7 +56,7 @@ const Users = () => {
                     });
 
             } else if (result.isDenied) {
-                axios.patch(uri, { role: "admin" }, {
+                axios.patch(`/role/${id}`, { role: "admin" }, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem("verify_token")}`
                     }

@@ -6,7 +6,6 @@ import useAuth from '../../Hooks/useAuth';
 import { useEffect, useState } from 'react';
 import { useUpload } from '../../Hooks/useUpload';
 import { toast } from 'react-hot-toast';
-import axios from 'axios';
 import { setRole } from '../../Hooks/useRole';
 
 

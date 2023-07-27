@@ -11,9 +11,8 @@ import { useEffect } from 'react';
 
 const PopularInstractor = () => {
     const [instructors, setInstructors] = useState([]);
-    const uri = `${import.meta.env.VITE_SERVERLINK}/users/role/instructor`
     useEffect(() => {
-        axios.get(uri).then(res => setInstructors(res.data))
+        axios.get("/users/role/instructor").then(res => setInstructors(res.data))
     }, [])
     return (
         <div className='py-10 bg-[#F0F9F5]'>

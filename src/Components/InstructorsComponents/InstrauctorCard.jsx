@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 const InstrauctorCard = ({ instructor }) => {
-    console.log(instructor)
     const { _id, email, address, image, name, role } = instructor;
     return (
         <div className="card card-side bg-base-100 shadow-xl">

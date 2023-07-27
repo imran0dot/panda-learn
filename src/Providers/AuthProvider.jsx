@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
                     name: currentUser.displayName,
                     email: currentUser.email,
                 }
-                axios.post(`${import.meta.env.VITE_SERVERLINK}/jwt`, bodyData)
+                axios.post(`/jwt`, bodyData)
                 .then(res => localStorage.setItem("verify_token", res.data));
             }
             setLoading(false)

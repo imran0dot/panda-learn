@@ -3,7 +3,6 @@ import { toast } from "react-hot-toast";
 
 export const setRole = async (user, address) => {
     try {
-        const uri = `${import.meta.env.VITE_SERVERLINK}/user-role?email=${user?.email}`
         const setData = {
             name: user?.displayName,
             image: user?.photoURL,
@@ -12,7 +11,7 @@ export const setRole = async (user, address) => {
             role: "student",
         }
 
-        axios.put(uri, setData, {
+        axios.put(`/user-role?email=${user?.email}`, setData, {
             headers: {
                 "Content-Type": "application/json",
             }
@@ -27,9 +26,8 @@ export const setRole = async (user, address) => {
 
 
 export const getRole = async (user) => {
-    const uri = `${import.meta.env.VITE_SERVERLINK}/users/${user?.email}`;
     return new Promise((resolve, reject) => {
-        axios.get(uri)
+        axios.get(`/users/${user?.email}`)
             .then(res => resolve(res.data.role))
             .catch((err) => reject(err.message))
     })

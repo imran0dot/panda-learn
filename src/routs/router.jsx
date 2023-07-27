@@ -11,7 +11,6 @@ import PrivateRout from './PrivateRout';
 import Users from '../Dashboard/Pages/Users';
 import Error from '../Pages/Error/Error';
 import AddCourse from "../Dashboard/Pages/AddCourse";
-import axios from "axios";
 import Instructor from "../Pages/Instructors/Instructor";
 
 const router = createBrowserRouter([
@@ -29,7 +28,6 @@ const router = createBrowserRouter([
         {
             path: "/instractors",
             element: <Instructors />,
-            loader: () => axios(`${import.meta.env.VITE_SERVERLINK}/users/role/instructor`)
         },
         {
             path: "/instructor/:id",

@@ -9,7 +9,7 @@ const Instructor = () => {
     const array = [1,2,3,4,5,6]
     const { id } = useParams();
     useEffect(() => {
-        axios(`${import.meta.env.VITE_SERVERLINK}/instructor/${id}`).then(res => setData(res.data[0]));
+        axios(`/instructor/${id}`).then(res => setData(res.data[0]));
     }, [])
     return (
         <div className="grid grid-cols-2 gap-2 relative">
