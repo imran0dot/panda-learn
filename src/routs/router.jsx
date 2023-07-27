@@ -12,7 +12,7 @@ import Users from '../Dashboard/Pages/Users';
 import Error from '../Pages/Error/Error';
 import AddCourse from "../Dashboard/Pages/AddCourse";
 import axios from "axios";
-
+import Instructor from "../Pages/Instructors/Instructor";
 
 const router = createBrowserRouter([
     {
@@ -32,6 +32,10 @@ const router = createBrowserRouter([
             loader: () => axios(`${import.meta.env.VITE_SERVERLINK}/users/role/instructor`)
         },
         {
+            path: "/instructor/:id",
+            element: <Instructor />,
+        },
+        {
             path: "/contact-us",
             element: <ContactUs />
         },
@@ -47,16 +51,16 @@ const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <PrivateRout> <Dashboard /> </PrivateRout>,
-       children: [
-        {
-            path: "/dashboard/users",
-            element: <Users />,
-        },
-        {
-            path: "/dashboard/add-new-course",
-            element: <AddCourse />,
-        }
-       ]
+        children: [
+            {
+                path: "/dashboard/users",
+                element: <Users />,
+            },
+            {
+                path: "/dashboard/add-new-course",
+                element: <AddCourse />,
+            }
+        ]
     },
     {
         path: "*",

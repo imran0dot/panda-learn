@@ -6,7 +6,7 @@ const ClassBox = ({ image }) => {
     return (
         <div
             className='p-7 shadow-sm flex flex-col gap-2 border duration-300 hover:shadow-lg'>
-            <img className='border' src={image} alt="" />
+            <img className='border-2 rounded w-full h-60 object-cover' src={image} alt="" />
             <h4 className='text-2xl font-bold'>The Complete Python Bootcamp</h4>
             <div className=''>
                 <span className='flex items-center gap-2'>

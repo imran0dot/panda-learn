@@ -14,7 +14,7 @@ const InstrauctorCard = ({ instructor }) => {
                 <div className="card-actions justify-end">
                     {/* TODO need to make single instructos page  */}
                     <Link
-                    to={`instructor/${_id}`}
+                    to={`/instructor/${_id}`}
                      className="btn bg-[#00988A] hover:bg-[#2E836F] text-white w-full">Watch</Link>
                 </div>
             </div>
