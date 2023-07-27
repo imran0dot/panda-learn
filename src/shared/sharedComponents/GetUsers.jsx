@@ -6,15 +6,9 @@ const GetUsers = () => {
     const { user } = useAuth();
     const { isLoading, data, refetch } = useQuery({
         queryKey: ["users", user?.email],
-        queryFn: async () => {
-          const token = localStorage.getItem("verify_token");
-      
+        queryFn: async () => {      
           try {
-            const response = await axios(`/users`, {
-              headers: {
-                'Authorization': `Bearer ${token}`
-              },
-            });
+            const response = await axios(`/users`);
                   return response.data;
           } catch (error) {
             console.error('Error:', error);

@@ -54,7 +54,7 @@ const adminMenuItems = [
         url: "/dashboard/instructors",
     },
     {
-        name: 'Students',
+        name: 'Users',
         url: "/dashboard/users",
     },
 ]

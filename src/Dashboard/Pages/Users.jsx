@@ -43,11 +43,7 @@ const Users = () => {
         }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-                axios.patch(`/role/${id}`, { role: "instructor" }, {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem("verify_token")}`
-                    }
-                })
+                axios.patch(`/role/${id}`, { role: "instructor" })
                     .then(res => {
                         if (res.data.modifiedCount > 0) {
                             Swal.fire("Saved! as a Instructor")
@@ -56,11 +52,7 @@ const Users = () => {
                     });
 
             } else if (result.isDenied) {
-                axios.patch(`/role/${id}`, { role: "admin" }, {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem("verify_token")}`
-                    }
-                })
+                axios.patch(`/role/${id}`, { role: "admin" })
                     .then(res => {
                         if (res.data.modifiedCount > 0) {
                             Swal.fire("Saved! as a Admin")

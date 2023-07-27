@@ -40,9 +40,10 @@ const Table = ({ userData, isLoading, refetch, handleDelete, handleEdit }) => {
                                                 onClick={() => { handleDelete(_id) }}
                                                 disabled={currentUser.user.email === email}
                                                 className="btn btn-ghost btn-xs bg-red-500">delete</button>
-                                            <button 
-                                            onClick={() => {handleEdit(_id)}}
-                                            className="btn btn-ghost btn-xs bg-green-500">edit</button>
+                                            <button
+                                                disabled={currentUser.user.email === email}
+                                                onClick={() => { handleEdit(_id) }}
+                                                className="btn btn-ghost btn-xs bg-green-500">edit</button>
                                         </th>
                                     </tr>
                                 )
