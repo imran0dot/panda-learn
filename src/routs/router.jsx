@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from '../App';
 import Home from '../Pages/Home/Home';
 import Courses from '../Pages/Courses/Courses';
-import Instractors from '../Pages/Instractors/Instractors';
+import Instructors from '../Pages/Instructors/Instructors';
 import ContactUs from '../Pages/Contact Us/ContactUs';
 import AboutUs from '../Pages/About Us/AboutUs';
 import User from '../Pages/UserLogin/User';
@@ -10,8 +10,8 @@ import Dashboard from '../Dashboard/Dashboard';
 import PrivateRout from './PrivateRout';
 import Users from '../Dashboard/Pages/Users';
 import Error from '../Pages/Error/Error';
-import Instructors from "../Dashboard/Pages/Instructors";
 import AddCourse from "../Dashboard/Pages/AddCourse";
+import axios from "axios";
 
 
 const router = createBrowserRouter([
@@ -28,7 +28,8 @@ const router = createBrowserRouter([
         },
         {
             path: "/instractors",
-            element: <Instractors />
+            element: <Instructors />,
+            loader: () => axios(`${import.meta.env.VITE_SERVERLINK}/users/role/instructor`)
         },
         {
             path: "/contact-us",
@@ -50,12 +51,6 @@ const router = createBrowserRouter([
         {
             path: "/dashboard/users",
             element: <Users />,
-        },
-        {
-            path: "/dashboard/instructors",
-            element: <Instructors />,
-            loader: () => fetch(`${import.meta.env.VITE_SERVERLINK}/users/role/instructors`)
-
         },
         {
             path: "/dashboard/add-new-course",
