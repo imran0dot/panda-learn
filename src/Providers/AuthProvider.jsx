@@ -20,7 +20,7 @@ const googleProvider = new GoogleAuthProvider()
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [userRole, setUserRole] = useState("")
+    const [userRole, setUserRole] = useState(null)
     const [loading, setLoading] = useState(true);
     const createUser = (email, password) => {
         setLoading(true)
@@ -64,13 +64,13 @@ const AuthProvider = ({ children }) => {
                 setUserRole(res)
             })
             // set token at loacal storage
-            if(currentUser?.email){
+            if (currentUser?.email) {
                 const bodyData = {
                     name: currentUser.displayName,
                     email: currentUser.email,
                 }
                 axios.post(`/jwt`, bodyData)
-                .then(res => localStorage.setItem("verify_token", res.data));
+                    .then(res => localStorage.setItem("verify_token", res.data));
             }
             setLoading(false)
         })

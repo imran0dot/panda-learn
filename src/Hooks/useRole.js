@@ -11,11 +11,7 @@ export const setRole = async (user, address) => {
             role: "student",
         }
 
-        axios.put(`/user-role?email=${user?.email}`, setData, {
-            headers: {
-                "Content-Type": "application/json",
-            }
-        }).then(() => {
+        axios.put(`/user-role?email=${user?.email}`, setData).then(() => {
             toast.success("user has been added on DB")
         })
     } catch (error) {

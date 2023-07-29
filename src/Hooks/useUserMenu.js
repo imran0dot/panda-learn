@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 const useUserMenu = () => {
     const { userRole } = useAuth();
+    console.log(userRole);
     const [menuItems, setMenuItems] = useState([]);
     const studentMenu = studentMenuItems;
     const adminMenu = adminMenuItems;

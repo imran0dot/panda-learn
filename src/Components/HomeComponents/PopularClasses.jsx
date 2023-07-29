@@ -2,18 +2,24 @@ import image from '../../assets/imgs/Image1.png'
 import Fixedwidth from '../../Layouts/Fixedwidth';
 import Title from '../../shared/sharedComponents/Title';
 import ClassBox from '../../shared/sharedComponents/ClassBox';
+import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const PopularClasses = () => {
-    const array = [1, 2, 3, 4, 5, 6, 7, 8]
+    const [course, setCourse] = useState([])
+    useEffect(() => {
+        axios("/all-course").then(res => setCourse(res.data)).catch(err => console.log(err));
+    }, [])
     return (
         <div className='my-10'>
             <Fixedwidth>
                 <Title title="Best selling Classes" subTitle="Our popular and best selling classe " />
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10'>
                     {
-                        array.map((x, i) => {
+                        course?.map((singleCourse, i) => {
                             return (
-                                <ClassBox key={i} image={image} />
+                                <ClassBox singleCourse={singleCourse} key={i} placeHolder={image} />
                             )
                         })
                     }

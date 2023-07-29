@@ -3,20 +3,13 @@ import axios from "axios";
 export const useUpload = async (image) => {
     const formData = new FormData();
     formData.append("image", image);
-
-    const postImgUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMG_HOST}`;
-    
     try {
         return new Promise((resolve, reject) => {
-            axios.post(postImgUrl, formData)
-                .then(res => {
-                    const imageUrl = res.data.data.display_url;
-                    resolve(imageUrl);
-                })
-                .catch(err => {
-                    console.log(err);
-                    reject(err);
-                });
+            fetch(`https://api.imgbb.com/1/upload?key=e6cf4b51cb80f7f70048d35151419f81`, {
+                method: "POST",
+                body: formData,
+            }).then(res => res.json()).then (data => resolve(data.data.display_url))
+
         });
     } catch (err) {
         console.log(err);

@@ -12,7 +12,7 @@ import { useEffect } from 'react';
 const PopularInstractor = () => {
     const [instructors, setInstructors] = useState([]);
     useEffect(() => {
-        axios.get("/users/role/instructor").then(res => setInstructors(res.data))
+        axios("/users/role/instructor").then(res => setInstructors(res.data))
     }, [])
     return (
         <div className='py-10 bg-[#F0F9F5]'>
@@ -30,7 +30,7 @@ const PopularInstractor = () => {
                 >
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
                         {
-                            instructors.map((instructor, index) => {
+                            instructors?.map((instructor, index) => {
                                 return (
                                     <SwiperSlide key={index}>
                                         <InstractorCard instructor={instructor} />
