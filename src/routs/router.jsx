@@ -12,6 +12,7 @@ import Users from '../Dashboard/Pages/Users';
 import Error from '../Pages/Error/Error';
 import AddCourse from "../Dashboard/Pages/AddCourse";
 import Instructor from "../Pages/Instructors/Instructor";
+import Course from "../Pages/Courses/Course";
 
 const router = createBrowserRouter([
     {
@@ -22,8 +23,12 @@ const router = createBrowserRouter([
             element: <Home />,
         },
         {
-            path: "/classes",
+            path: "/courses",
             element: <Courses />
+        },
+        {
+            path: "/course/:id",
+            element: <Course />
         },
         {
             path: "/instractors",

@@ -9,8 +9,8 @@ const ClassBox = ({ singleCourse, placeHolder }) => {
             data-aos="zoom-in"
             className='p-7 shadow-sm flex flex-col gap-2 border duration-300 hover:shadow-lg'>
             <img className='border-2 rounded w-full h-60 object-cover' src={image ? image : placeHolder} alt="" />
+            <div className='h-40'>
             <h4 className='text-2xl font-bold'>{name} <span className="text-sm">by {instructior}</span></h4>
-            <div className=''>
                 <span className='flex items-center gap-2'>
                     4.6<ReactStars
                         count={5}
@@ -21,7 +21,7 @@ const ClassBox = ({ singleCourse, placeHolder }) => {
                     />(12000)</span>
                 <p className='font-bold'>${sellPrice} <s className=' font-thin '>${price}</s></p>
             </div>
-            <Button to="/">Enroll Now</Button>
+            <Button to={`/course/${_id}`}>Enroll Now</Button>
         </div>
     );
 };

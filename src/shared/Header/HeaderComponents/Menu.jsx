@@ -11,7 +11,7 @@ const Menu = ({ mobileMenu }) => {
         },
         {
             name: 'courses',
-            url: "/classes",
+            url: "/courses",
         },
         {
             name: 'Instractors',
