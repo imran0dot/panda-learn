@@ -3,13 +3,15 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ClassBox from "../../shared/sharedComponents/ClassBox";
+import useClasses from "../../Hooks/useClasses";
 
 const Instructor = () => {
     const [data, setData] = useState([]);
-    const array = [1,2,3,4,5,6]
+    const [classes, setClasses] = useState([]);
     const { id } = useParams();
     useEffect(() => {
         axios(`/instructor/${id}`).then(res => setData(res.data[0]));
+        useClasses().then(res => setClasses(res));
     }, [])
     return (
         <div className="grid grid-cols-2 gap-2 relative">
@@ -23,9 +25,11 @@ const Instructor = () => {
                 <h3 className="text-3xl font-bold">My Classes:- </h3>
                 <div className="grid grid-cols-3 gap-4">
                     {
-                        array?.map((x,i) => {
+                        classes?.map((singleCourse,i) => {
                             return (
-                                <ClassBox image={data.image} key={i} />
+                                <ClassBox 
+                                singleCourse={singleCourse}
+                                image={data.image} key={i} />
                             )
                         })
                     }
