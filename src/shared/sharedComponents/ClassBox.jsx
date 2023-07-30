@@ -6,6 +6,7 @@ const ClassBox = ({ singleCourse, placeHolder }) => {
     const { name, category, price, sellPrice, _id, image, instructior } = singleCourse;
     return (
         <div
+            data-aos="zoom-in"
             className='p-7 shadow-sm flex flex-col gap-2 border duration-300 hover:shadow-lg'>
             <img className='border-2 rounded w-full h-60 object-cover' src={image ? image : placeHolder} alt="" />
             <h4 className='text-2xl font-bold'>{name} <span className="text-sm">by {instructior}</span></h4>
@@ -20,7 +21,7 @@ const ClassBox = ({ singleCourse, placeHolder }) => {
                     />(12000)</span>
                 <p className='font-bold'>${sellPrice} <s className=' font-thin '>${price}</s></p>
             </div>
-                <Button to="/">Enroll Now</Button>
+            <Button to="/">Enroll Now</Button>
         </div>
     );
 };

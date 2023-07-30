@@ -11,7 +11,6 @@ import {
   QueryClientProvider,
 } from 'react-query'
 import axios from 'axios'
-import useAuth from './Hooks/useAuth'
 
 const queryClient = new QueryClient()
 
@@ -19,7 +18,6 @@ const queryClient = new QueryClient()
 axios.defaults.baseURL = "http://localhost:3000/";
 axios.interceptors.request.use((req) => {
   req.headers.Authorization = `Bearer ${localStorage.getItem("verify_token")}`
-
   return req
 })
 
