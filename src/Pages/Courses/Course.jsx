@@ -11,7 +11,7 @@ const Course = () => {
     const params = useParams();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
-    const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE}`);
+    const stripePromise = loadStripe(import.meta.env.VITE_STRIPE);
     const url = `/course/?id=${params.id}`;
 
     useEffect(() => {
@@ -45,6 +45,7 @@ const Course = () => {
                                     <Elements stripe={stripePromise}>
                                         <CheckoutForm 
                                         loading={loading}
+                                        courseId={data._id}
                                         price={JSON.parse(data?.sellPrice)}
                                         
                                         />
