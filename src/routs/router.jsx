@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         },
         {
             path: "/course/:id",
-            element: <Course />
+            element: <PrivateRout><Course /></PrivateRout>
         },
         {
             path: "/instractors",

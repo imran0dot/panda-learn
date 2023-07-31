@@ -3,12 +3,15 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Fixedwidth from '../../Layouts/Fixedwidth';
 import Loading from '../../shared/sharedComponents/Loading';
-import SubmitBtn from '../../shared/sharedComponents/SubmitBtn';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import CheckoutForm from '../../Components/Forms/CheckOutForm';
 
 const Course = () => {
     const params = useParams();
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState({});
+    const stripePromise = loadStripe(`${import.meta.env.VITE_STRIPE}`);
     const url = `/course/?id=${params.id}`;
 
     useEffect(() => {
@@ -39,9 +42,13 @@ const Course = () => {
                                     <h6 className='font-bold'>Avilable Sit: {data.sitNumber}</h6>
                                     <p className='text-2xl font-bold'>Price: {data?.sellPrice} <del >${data?.price}</del></p>
 
-                                    <SubmitBtn 
-                                    loading={loading}
-                                    isDisable={JSON.parse(data.sitNumber <= 0)}>Inrole Now</SubmitBtn>
+                                    <Elements stripe={stripePromise}>
+                                        <CheckoutForm 
+                                        loading={loading}
+                                        price={JSON.parse(data?.sellPrice)}
+                                        
+                                        />
+                                    </Elements>
                                 </div>
                             </div>
                         </div>
