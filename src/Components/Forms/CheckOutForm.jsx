@@ -56,8 +56,7 @@ const CheckoutForm = ({ price, courseId }) => {
             console.log('[error]', error);
             setCardError(error.message);
         } else {
-            setCardError("")
-            console.log('[PaymentMethod]', paymentMethod);
+            setCardError("");
         }
 
 

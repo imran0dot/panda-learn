@@ -13,6 +13,8 @@ import Error from '../Pages/Error/Error';
 import AddCourse from "../Dashboard/Pages/AddCourse";
 import Instructor from "../Pages/Instructors/Instructor";
 import Course from "../Pages/Courses/Course";
+import MyClasses from "../Dashboard/Pages/MyClasses";
+import PaymentHistory from "../Dashboard/Pages/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -62,6 +64,14 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/add-new-course",
                 element: <AddCourse />,
+            },
+            {
+                path: "/dashboard/my-classes",
+                element: <MyClasses />
+            },
+            {
+                path: "/dashboard/payment-history",
+                element: <PaymentHistory />,
             }
         ]
     },

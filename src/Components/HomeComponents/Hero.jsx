@@ -1,8 +1,15 @@
 import { BiSearchAlt } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Hero = () => {
+    const naviagete = useNavigate();
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const searchValue = e.target.search.value;
+        naviagete(`/courses/?keys=${searchValue}`)
+    }
     return (
             <div className='text-center'>
                 <div className='bg-[#DEDEDE] p-0 md:py-10 lg:py-10 hero'>
@@ -12,13 +19,21 @@ const Hero = () => {
 
                         <p>Embrace Multilingual Mastery: Explore the Rich Tapestry of Languages, Engage in Immersive Learning Adventures, and Excel as a Global Communicator</p>
 
-                        <label htmlFor="" className='relative flex items-center rounded-full overflow-hidden shadow-lg input input-bordered '>
-                            <input type="text" placeholder="Type here" className="w-full outline-none" />
+                        <form 
+                        onSubmit={handleSearch}
+                        className='relative flex items-center rounded-full overflow-hidden shadow-lg input input-bordered '>
+                            <input 
+                            type="text"
+                            name='search' 
+                            placeholder="Type here" 
+                            className="w-full outline-none text-black" />
 
-                            <div className=' absolute right-0 text-2xl bg-[#00988A] p-3 w-16 flex justify-center cursor-pointer text-white'>
+                            <button
+                            type='submit'
+                            className=' absolute right-0 text-2xl bg-[#00988A] p-3 w-16 flex justify-center cursor-pointer text-white'>
                                 <BiSearchAlt />
-                            </div>
-                        </label>
+                            </button>
+                        </form>
                     </div>
                 </div>
 

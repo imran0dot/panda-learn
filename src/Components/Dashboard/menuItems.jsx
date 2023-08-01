@@ -5,11 +5,11 @@ const studentMenuItems = [
     },
     {
         name: 'My Classes',
-        url: "/dashboard",
+        url: "/dashboard/my-classes",
     },
     {
         name: 'Payment History',
-        url: "/dashboard",
+        url: "/dashboard/payment-history",
     },
     {
         name: 'My Profile',
