@@ -1,32 +1,54 @@
 import axios from 'axios';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Loading from '../../shared/sharedComponents/Loading';
 
 const MyClasses = () => {
-    axios("/my-classes").then(res => console.log(res.data));
+    const [myClasses, setMyClasses] = useState([]);
+    const [loding, setLoading] = useState(true);
+
+    useEffect(() => {
+        axios("/my-classes").then(res => {
+            setMyClasses(res.data)
+            setLoading(false);
+        });
+    }, [])
     return (
-        <div>
-            <div className="overflow-x-auto">
-                <table className="table table-zebra">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Catagory</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                    </tbody>
-                </table>
+        loding ? <Loading /> :
+            <div>
+                <div className="overflow-x-auto">
+                    <table className="table table-zebra">
+                        {/* head */}
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Img</th>
+                                <th>Name</th>
+                                <th>Catagory</th>
+                                <th>Instructor</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                myClasses.map((myClass, index) => {
+                                    console.log(myClass);
+                                    return (
+                                        <tr key={myClass._id}>
+                                            <th>{index + 0}</th>
+                                            <td><img className='w-16 h-16 object-cover border-2 shadow-md rounded-full' src={myClass.image} alt="" /></td>
+                                            <td>{myClass.name}</td>
+                                            <td>{myClass.category}</td>
+                                            <td>{myClass.instructior}</td>
+                                            <td>{myClass.sellPrice}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
     );
 };
 

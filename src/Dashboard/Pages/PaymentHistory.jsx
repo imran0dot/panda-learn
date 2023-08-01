@@ -1,14 +1,19 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import Loading from "../../shared/sharedComponents/Loading";
 
 const PaymentHistory = () => {
     const [paymentHistory, setPaymentHistory] = useState([]);
+    const [loding, setLoading] = useState(true);
     useEffect(() => {
-        axios("/payment-history").then(res => setPaymentHistory(res.data));
+        axios("/payment-history").then(res => {
+            setPaymentHistory(res.data)
+            setLoading(false);
+        });
     }, [])
     return (
-        <div>
+        loding ? <Loading /> : <div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
