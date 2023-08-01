@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Loading from '../../shared/sharedComponents/Loading';
+import { toast } from 'react-hot-toast';
 
 const MyClasses = () => {
     const [myClasses, setMyClasses] = useState([]);
@@ -11,6 +12,9 @@ const MyClasses = () => {
         axios("/my-classes").then(res => {
             setMyClasses(res.data)
             setLoading(false);
+        }).catch(err => {
+            setLoading(false);
+            toast.error(err.message);
         });
     }, [])
     return (

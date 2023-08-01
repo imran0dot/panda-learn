@@ -2,14 +2,19 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import Loading from "../../shared/sharedComponents/Loading";
+import { toast } from "react-hot-toast";
 
 const PaymentHistory = () => {
     const [paymentHistory, setPaymentHistory] = useState([]);
     const [loding, setLoading] = useState(true);
     useEffect(() => {
-        axios("/payment-history").then(res => {
+        axios("/payment-history")
+        .then(res => {
             setPaymentHistory(res.data)
             setLoading(false);
+        }).catch(err => {
+            setLoading(false);
+            toast.error(err.message);
         });
     }, [])
     return (

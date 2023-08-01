@@ -43,15 +43,11 @@ const adminMenuItems = [
     },
     {
         name: 'All Course',
-        url: "/course",
+        url: "/dashboard/all-courses",
     },
     {
         name: "Add Course",
         url: "/dashboard/add-new-course"
-    },
-    {
-        name: 'Instractors',
-        url: "/dashboard/instructors",
     },
     {
         name: 'Users',
