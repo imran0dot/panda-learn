@@ -9,9 +9,10 @@ const Instructor = () => {
     const [data, setData] = useState([]);
     const [classes, setClasses] = useState([]);
     const { id } = useParams();
+    
+    useClasses().then(res => setClasses(res));
     useEffect(() => {
         axios(`/instructor/${id}`).then(res => setData(res.data[0]));
-        useClasses().then(res => setClasses(res));
     }, [])
     return (
         <div className="grid grid-cols-2 gap-2 relative">

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import useAuth from '../../Hooks/useAuth'
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = ({ price, courseId }) => {
@@ -14,6 +15,7 @@ const CheckoutForm = ({ price, courseId }) => {
     const [loading, setLoading] = useState(false);
     const [clintSecret, setClientSecret] = useState("");
     const [isDisable, setIsDisable] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         //get clint secrate from backednd
@@ -25,15 +27,18 @@ const CheckoutForm = ({ price, courseId }) => {
         }
     }, [price])
 
+    console.log(courseId);
 
     useEffect(() => {
         axios(`enroled/${courseId}`).then(res => {
-            if(res.data === true){
+            if (res.data === true) {
                 setIsDisable(true);
             }
         });
 
     }, [loading])
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         setLoading(true);
@@ -53,7 +58,6 @@ const CheckoutForm = ({ price, courseId }) => {
         });
 
         if (error) {
-            console.log('[error]', error);
             setCardError(error.message);
         } else {
             setCardError("");
@@ -76,53 +80,54 @@ const CheckoutForm = ({ price, courseId }) => {
         }
 
         if (paymentIntent.status == "succeeded") {
+            setLoading(false);
             const paymentInfo = {
                 name: user?.user?.displayName,
                 email: user?.user?.email,
+                date: new Date(),
                 transactionId: paymentIntent.id,
                 price,
                 courseId,
             }
+
             axios.post("/payments", paymentInfo).then((res) => {
                 if (res.data.acknowledged == true) {
                     toast.success("Welcome")
-                    setLoading(false);
+                    navigate("/dashboard/my-classes")
                 }
-
-            
-        })
-    }
-};
-return (
-    <div>
-        <form onSubmit={handleSubmit}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+            })
+        }
+    };
+    return (
+        <div>
+            <form onSubmit={handleSubmit}>
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
                             },
                         },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            <SubmitBtn
-            
-            loading={loading}
-            isDisable={!stripe || !clintSecret || isDisable }>Enrole Now</SubmitBtn>
-        </form>
-        {
-            cardError && <p className="text-red-600">{cardError}</p>
-        }
+                    }}
+                />
+                <SubmitBtn
 
-    </div>
-);
+                    loading={loading}
+                    isDisable={!stripe || !clintSecret || isDisable}>Enrole Now</SubmitBtn>
+            </form>
+            {
+                cardError && <p className="text-red-600">{cardError}</p>
+            }
+
+        </div>
+    );
 };
 
 export default CheckoutForm;
