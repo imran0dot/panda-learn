@@ -46,6 +46,7 @@ const Course = () => {
                                         <CheckoutForm 
                                         loading={loading}
                                         courseId={data._id}
+                                        sitNumber={data.sitNumber}
                                         price={JSON.parse(data?.sellPrice)}
                                         
                                         />
