@@ -15,7 +15,7 @@ export const setRole = async (user, address) => {
             toast.success("user has been added on DB")
         })
     } catch (error) {
-        console.log(error);
+        toast.error(error.message);
     }
 
 }

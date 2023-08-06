@@ -24,7 +24,7 @@ const CheckoutForm = ({ price, courseId, sitNumber }) => {
             axios.post('/create-payment-intent', { price })
                 .then(res => {
                     setClientSecret(res.data.clientSecret)
-                }).catch(err => console.log(err));
+                }).catch(err => toast.error(err.message));
         }
     }, [price])
 

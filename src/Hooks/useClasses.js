@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const useClasses = async (keys) => {
     try{
@@ -8,7 +9,7 @@ const useClasses = async (keys) => {
            
     }
     catch(err){
-        console.log(err)
+       toast.error(err.message)
     }
     
 }

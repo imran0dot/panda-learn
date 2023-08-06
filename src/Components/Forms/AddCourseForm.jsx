@@ -34,7 +34,6 @@ const AddCourseForm = () => {
             }
 
             axios.post("/add-new-course", courseData).then(res => {
-                console.log(res.data);
                 toast.success("New Course Has Been Added")
             });
             setLoding(false)

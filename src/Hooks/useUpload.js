@@ -1,4 +1,4 @@
-import axios from "axios";
+import { toast } from "react-hot-toast";
 
 export const useUpload = async (image) => {
     const formData = new FormData();
@@ -12,7 +12,7 @@ export const useUpload = async (image) => {
 
         });
     } catch (err) {
-        console.log(err);
+        toast.error(err.message);
         throw err;
     }
 }

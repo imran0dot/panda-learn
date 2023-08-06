@@ -36,7 +36,6 @@ const MyClasses = () => {
                         <tbody>
                             {
                                 myClasses.map((myClass, index) => {
-                                    console.log(myClass);
                                     return (
                                         <tr key={myClass._id}>
                                             <th>{index + 0}</th>
