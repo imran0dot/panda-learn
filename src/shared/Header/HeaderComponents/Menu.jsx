@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import AciveLink from '../../../Components/AciveLink';
-import useAuth from '../../../Hooks/useAuth';
+import { BsFillCartCheckFill } from 'react-icons/bs';
+
 import AccountMenu from './AccountMenu';
 
 const Menu = ({ mobileMenu }) => {
@@ -37,7 +38,7 @@ const Menu = ({ mobileMenu }) => {
                         </AciveLink>
                     )
                 })}
-                <Link className='btn btn-outline rounded-full'>Enroll Now</Link>
+                <Link to="/cart" className='capitalize btn rounded-lg text-2xl'><BsFillCartCheckFill /> My Cart</Link>
                 <AccountMenu />
 
             </nav>

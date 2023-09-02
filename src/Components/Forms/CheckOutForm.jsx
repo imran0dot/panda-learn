@@ -2,7 +2,9 @@ import { useForm } from "react-hook-form";
 import SubmitBtn from "../../shared/sharedComponents/SubmitBtn";
 import CheckoutSidebar from "../Sidebars/CheckoutSidebar";
 
-const CheckOutForm = ({ user }) => {
+const CheckOutForm = ({cartData, user }) => {
+    //get cartData
+    
     //reat hook from handle
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
@@ -34,7 +36,7 @@ const CheckOutForm = ({ user }) => {
                 </div>
 
                 <div>
-                    <CheckoutSidebar />
+                    <CheckoutSidebar cartData={cartData} />
                 </div>
 
 

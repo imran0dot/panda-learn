@@ -1,6 +1,7 @@
 import SubmitBtn from "../../shared/sharedComponents/SubmitBtn";
 
-const CheckoutSidebar = () => {
+const CheckoutSidebar = ({ cartData }) => {
+    const { data, totalPrice } = cartData;
     return (
         <div className="border bg-[#F9F9F9] p-4">
             <h3 className="text-3xl font-bold mb-4">Payment Details</h3>
@@ -14,17 +15,25 @@ const CheckoutSidebar = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                        <tr>
-                            <td>Item Name</td>
-                            <td>Price</td>
-                        </tr>
-                        <tr>
-                            <td>Item Name</td>
-                            <td>Price</td>
-                        </tr>
+
+                        {data.map((item) => {
+                            return (
+                                <tr key={item._id}>
+                                    <td>{item.name}</td>
+                                    <td>{item.price}</td>
+                                </tr>
+                            )
+                        })
+                        }
                     </tbody>
                 </table>
+
+                <div className="text-2xl font-bold flex justify-between mt-7">
+                    <span>Subtotal</span>
+                    <span>{totalPrice}</span>
+                </div>
+
+
             </div>
             <div className="p-3 mt-5">
                 <p>

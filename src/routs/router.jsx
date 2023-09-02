@@ -17,6 +17,7 @@ import MyClasses from "../Dashboard/Pages/MyClasses";
 import PaymentHistory from "../Dashboard/Pages/PaymentHistory";
 import AllCourses from "../Dashboard/Pages/AllCourses";
 import CheckOut from "../Pages/CheckOut/CheckOut";
+import Cart from "../Pages/Cart/Cart";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         {
             path: "/login",
             element: <User />
+        },
+        {
+            path: "/cart",
+            element: <Cart />
         },
         {
             path: "/check-out",

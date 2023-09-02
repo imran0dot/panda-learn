@@ -11,11 +11,11 @@ import {
   QueryClientProvider,
 } from 'react-query'
 import axios from 'axios'
-
 const queryClient = new QueryClient()
 
 
-axios.defaults.baseURL = "https://test-server-detectiveseo.vercel.app/";
+// axios.defaults.baseURL = "https://test-server-detectiveseo.vercel.app/";
+axios.defaults.baseURL = "http://localhost:3300/";
 axios.interceptors.request.use((req) => {
   req.headers.Authorization = `Bearer ${localStorage.getItem("verify_token")}`
   return req
@@ -24,10 +24,10 @@ axios.interceptors.request.use((req) => {
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <Toaster position="top-center" reverseOrder={false} />
-        <RouterProvider router={router} />
-      </QueryClientProvider>
+        <QueryClientProvider client={queryClient}>
+          <Toaster position="top-center" reverseOrder={false} />
+          <RouterProvider router={router} />
+        </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>
 )
