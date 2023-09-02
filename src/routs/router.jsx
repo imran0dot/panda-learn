@@ -16,6 +16,7 @@ import Course from "../Pages/Courses/Course";
 import MyClasses from "../Dashboard/Pages/MyClasses";
 import PaymentHistory from "../Dashboard/Pages/PaymentHistory";
 import AllCourses from "../Dashboard/Pages/AllCourses";
+import CheckOut from "../Pages/CheckOut/CheckOut";
 
 const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
         {
             path: "/login",
             element: <User />
+        },
+        {
+            path: "/check-out",
+            element: <CheckOut />
         }]
     },
     {

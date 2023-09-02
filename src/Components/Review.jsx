@@ -1,4 +1,3 @@
-import React from 'react';
 import ReviewsSlider from './ReviewsSlider';
 import Fixedwidth from '../Layouts/Fixedwidth';
 

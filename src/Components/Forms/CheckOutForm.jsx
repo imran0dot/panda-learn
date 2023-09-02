@@ -1,141 +1,46 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useForm } from "react-hook-form";
 import SubmitBtn from "../../shared/sharedComponents/SubmitBtn";
-import { useEffect, useState } from "react";
-import useAuth from '../../Hooks/useAuth'
-import axios from "axios";
-import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import CheckoutSidebar from "../Sidebars/CheckoutSidebar";
 
+const CheckOutForm = ({ user }) => {
+    //reat hook from handle
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => console.log(data);
 
-const CheckoutForm = ({ price, courseId, sitNumber }) => {
-    const user = useAuth();
-    const stripe = useStripe();
-    const elements = useElements();
-    const [cardError, setCardError] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [enroled, setEnrole] = useState(false);
-    const [clintSecret, setClientSecret] = useState("");
-    const [isDisable, setIsDisable] = useState(false);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        //get clint secrate from backednd
-        if (price) {
-            axios.post('/create-payment-intent', { price })
-                .then(res => {
-                    setClientSecret(res.data.clientSecret)
-                }).catch(err => toast.error(err.message));
-        }
-    }, [price])
-
-    useEffect(() => {
-        axios(`enroled/${courseId}`).then(res => {
-            if (res.data === true) {
-                setEnrole(true);
-                setIsDisable(true);
-            }
-        });
-
-    }, [loading])
-
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        setLoading(true);
-
-        if (!stripe || !elements) {
-            return;
-        }
-
-        const card = elements.getElement(CardElement);
-
-        if (card == null) {
-            return;
-        }
-
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-            type: 'card',
-            card,
-        });
-
-        if (error) {
-            setCardError(error);
-        } else {
-            setCardError(null);
-        }
-
-
-        // Confirm payment
-        const { paymentIntent, error: confirmPaymentError } = await stripe.confirmCardPayment(clintSecret, {
-            payment_method: {
-                card: card,
-                billing_details: {
-                    name: user?.user?.displayName || "Unknown",
-                    email: user?.user?.email || "Anonymous ",
-                },
-            },
-        })
-
-        if (confirmPaymentError) {
-            setCardError(confirmPaymentError)
-        }
-
-        if (paymentIntent?.status == "succeeded") {
-            setLoading(false);
-            const paymentInfo = {
-                name: user?.user?.displayName,
-                email: user?.user?.email,
-                date: new Date(),
-                transactionId: paymentIntent.id,
-                price,
-                courseId,
-            }
-
-            axios.patch(`/course/${courseId}`, {sitNumber: parseInt(sitNumber)}). then(res => console.log(res.data));
-
-            axios.post("/payments", paymentInfo).then((res) => {
-                if (res.data.acknowledged == true) {
-                    toast.success("Welcome")
-                    navigate("/dashboard/my-classes")
-                }
-            })
-        }
-    };
     return (
         <div>
-            {
-                enroled ? <div className="text-center font-bold text-3xl p-3 bg-red-500">You Alredy Enroled</div> : <div>
+            <form
+                className="flex flex-col md:flex-row gap-5 "
+                onSubmit={handleSubmit(onSubmit)}>
+                <div className="w-full bg-[#F9F9F9] border p-3">
+                    <h3 className="text-3xl font-bold mb-4">Building Details</h3>
+                    <div
+                        className="flex flex-col gap-6 
+                    [&>*:nth-child(n)]:border-b-4 [&>*:nth-child(n)]:border-[#2E836F] [&>*:nth-child(n)]:w-full [&>*:nth-child(n)]:p-2 [&>*:nth-child(n)]:rounded-lg">
+                        <input
+                            defaultValue={user && user.displayName}
+                            {...register("name")} />
 
-                    <form onSubmit={handleSubmit}>
-                        <CardElement
-                            options={{
-                                style: {
-                                    base: {
-                                        fontSize: '16px',
-                                        color: '#424770',
-                                        '::placeholder': {
-                                            color: '#aab7c4',
-                                        },
-                                    },
-                                    invalid: {
-                                        color: '#9e2146',
-                                    },
-                                },
-                            }}
-                        />
-                        <SubmitBtn
+                        <input
+                            defaultValue={user && user.email}
+                            {...register("email")} />
 
-                            loading={loading}
-                            isDisable={!stripe || !clintSecret || isDisable}>Enrole Now</SubmitBtn>
-                    </form>
-                    {
-                        cardError && <p className="text-red-600">{cardError.message}</p>
-                    }
+
+
+                        <input
+                            defaultValue="Balla Bazar Kalihati tangail"
+                            {...register("Address")} />
+                    </div>
                 </div>
-            }
 
+                <div>
+                    <CheckoutSidebar />
+                </div>
+
+
+            </form>
         </div>
     );
 };
 
-export default CheckoutForm;
+export default CheckOutForm;
