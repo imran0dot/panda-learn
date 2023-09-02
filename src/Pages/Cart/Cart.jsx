@@ -8,15 +8,15 @@ const Cart = () => {
     return (
         <div>
             <Fixedwidth>
-                <div className="">
+                <div className="border bg-[#F9F9F9] p-5">
                     <table className="table">
                         {/* head */}
                         <thead>
                             <tr>
                                 <th></th>
                                 <th>Name</th>
-                                <th>Job</th>
-                                <th>Favorite Color</th>
+                                <th>Category</th>
+                                <th>Price</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,20 +27,20 @@ const Cart = () => {
                                         <td>{index + 1}</td>
                                         <th>{item.name}</th>
                                         <td>{item.category}</td>
-                                        <td>{item.price}</td>
+                                        <td>$ {item.price}</td>
                                     </tr>
                                 )
                             }
 
                         </tbody>
                     </table>
-                    <div className="text-4xl text-left font-bold">
+                    <div className="text-4xl text-left font-bold flex justify-between mt-10">
                         <h3>Total Price</h3>
-                        <h3>{totalPrice}</h3>
+                        <h3>$ {totalPrice}</h3>
                     </div>
-                </div>
-                <div className="flex justify-end w-full">
-                    <Button to="/check-out">Payment Now</Button>
+                    <div className="flex justify-end w-full mt-10">
+                        <Button to="/check-out">Payment Now</Button>
+                    </div>
                 </div>
             </Fixedwidth>
         </div>

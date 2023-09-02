@@ -27,11 +27,13 @@ const CheckOutForm = ({cartData, user }) => {
                             defaultValue={user && user.email}
                             {...register("email")} />
 
-
-
                         <input
                             defaultValue="Balla Bazar Kalihati tangail"
                             {...register("Address")} />
+
+                        <textarea name="comment" id="comment" cols="25" 
+                        placeholder="Please prvoide information if you have any require"
+                        rows="5"></textarea>
                     </div>
                 </div>
 
