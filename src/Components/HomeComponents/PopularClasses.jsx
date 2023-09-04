@@ -17,7 +17,7 @@ const PopularClasses = () => {
                 <Title title="Best selling Classes" subTitle="Our popular and best selling classe " />
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10'>
                     {
-                        course?.map((singleCourse, i) => {
+                        course?.slice(0, 8).map((singleCourse, i) => {
                             return (
                                 <ClassBox singleCourse={singleCourse} key={i} placeHolder={image} />
                             )

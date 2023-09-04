@@ -3,6 +3,7 @@ import Review from '../../Components/Review';
 import Hero from '../../Components/HomeComponents/Hero';
 import Info from '../../Components/HomeComponents/Info';
 import PopularClasses from '../../Components/HomeComponents/PopularClasses';
+import Features from '../../Components/HomeComponents/Features';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <PopularClasses />
             <PopularInstractor />
             <Info />
+            <Features />
             <Review />
         </div>
     );

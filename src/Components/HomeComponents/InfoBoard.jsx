@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Fixedwidth from '../../Layouts/Fixedwidth';
 import { AiOutlineArrowRight } from 'react-icons/ai'
 
@@ -9,7 +10,7 @@ const InfoBoard = () => {
                 <div className='flex flex-col gap-5'>
                     <div className='flex justify-between text-white font-bold'>
                         <h3 className='text-3xl'>Save big on these popular extensions</h3>
-                        <span className='cursor-pointer'>Browse Sales <AiOutlineArrowRight className='inline' /></span>
+                        <Link to="/courses" className='cursor-pointer'>Browse Sales <AiOutlineArrowRight className='inline' /></Link>
                     </div>
                     <div className='grid grid-cols-2 lg:grid-cols-3 gap-3 text-center'>
                         {
