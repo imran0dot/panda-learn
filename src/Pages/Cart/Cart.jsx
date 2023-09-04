@@ -1,12 +1,14 @@
 import Fixedwidth from "../../Layouts/Fixedwidth";
 import Button from "../../shared/sharedComponents/Button";
 import useCart from "../../Hooks/useCart";
+import {MdDeleteForever} from "react-icons/md"
 import { handleDelete } from "../../Hooks/useFackDb";
 import { useState } from "react";
 import { useEffect } from "react";
 const Cart = () => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([])
+    console.log(data);
     const [totalPrice, setTotalPrice] = useState(0);
     const cart = useCart()
     useEffect(() => {
@@ -51,10 +53,10 @@ const Cart = () => {
                                                 <td>{index + 1}</td>
                                                 <th>{item.name}</th>
                                                 <td>{item.category}</td>
-                                                <td>$ {item.price}</td>
-                                                <td className="btn btn-sm text-sm"
+                                                <td>$ {item.sellPrice}</td>
+                                                <td className="btn btn-sm bg-red-600 pb-7 text-white"
                                                     onClick={() => handleDeleteBtn(item._id)}
-                                                >Remove</td>
+                                                ><MdDeleteForever/></td>
                                             </tr>
                                         )
                                     }

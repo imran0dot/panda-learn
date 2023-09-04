@@ -27,7 +27,7 @@ const Course = () => {
             {
                 loading ? <Loading /> :
                     <Fixedwidth>
-                        <div className='grid grid-cols-2 gap-10'>
+                        <div className='grid md:grid-cols-2 gap-10'>
 
                             <div>
                                 <img className='bg-[#F9F9F9] border w-full' src={data.image} />
