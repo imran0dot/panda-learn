@@ -1,7 +1,7 @@
 import Fixedwidth from "../../Layouts/Fixedwidth";
 import Button from "../../shared/sharedComponents/Button";
-
 import useCart from "../../Hooks/useCart";
+import { handleDelete } from "../../Hooks/useFackDb";
 const Cart = () => {
     const { data, totalPrice } = useCart();
 
@@ -17,6 +17,7 @@ const Cart = () => {
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>Price</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,6 +29,9 @@ const Cart = () => {
                                         <th>{item.name}</th>
                                         <td>{item.category}</td>
                                         <td>$ {item.price}</td>
+                                        <td className="btn btn-sm text-sm" 
+                                        onClick={() => handleDelete(item._id)}
+                                        >Remove</td>
                                     </tr>
                                 )
                             }

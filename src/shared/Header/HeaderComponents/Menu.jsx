@@ -38,7 +38,7 @@ const Menu = ({ mobileMenu }) => {
                         </AciveLink>
                     )
                 })}
-                <Link to="/cart" className='capitalize btn rounded-lg text-2xl'><BsFillCartCheckFill /> My Cart</Link>
+                <Link to="/cart" className='capitalize btn rounded-lg text-2xl bg-transparent btn-outline btn-sm'><BsFillCartCheckFill /></Link>
                 <AccountMenu />
 
             </nav>
@@ -53,7 +53,8 @@ const Menu = ({ mobileMenu }) => {
                             </AciveLink>
                         )
                     })}
-                    <Link className='btn btn-outline rounded-full w-36'>Enroll Now</Link>
+                    <Link to="/cart" className='capitalize btn rounded-lg text-2xl bg-transparent btn-outline btn-sm'><BsFillCartCheckFill /> Cart</Link>
+                <AccountMenu />
                     <Link
                         to="/login"
                         className='btn btn-outline rounded-full w-36'>Login</Link>

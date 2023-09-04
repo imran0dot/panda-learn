@@ -15,10 +15,8 @@ const existItem = (id) => {
     let storedItems = getDataFromStore();
     const existItems = storedItems.find(singleItems => singleItems === id);
     if (existItems) {
-        return true
-    } else {
-        return false
-    }
+        return existItems
+    } return
 }
 
 // insert data 
@@ -35,7 +33,23 @@ const useFackDb = (id) => {
     localStorage.setItem("cartItems", JSON.stringify(storedItems))
 }
 
+const handleDelete = (id) => {
+    let storedItems = getDataFromStore();
+    let newArray = [];
+    const getItem = storedItems.find(item => item === id);
+    if(getItem){
+        for(const id of storedItems){
+            if(id !== getItem){
+                newArray.push(id);
+            }
+        }
+        localStorage.setItem("cartItems", JSON.stringify(newArray));
+        toast.error("Removed From the cart")
+    }
+
+}
 
 
 
-export { useFackDb, existItem, getDataFromStore }
+
+export { useFackDb, existItem, getDataFromStore, handleDelete }

@@ -1,4 +1,12 @@
 import SubmitBtn from "../../shared/sharedComponents/SubmitBtn";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import StripePayment from "../Forms/StripePayment";
+
+
+const PUBLIC_KEY = "pk_test_51NZWNUA7FZKxjKWi3jGwfEKCf9c43E2NEFByf8CHeLMsCuDYrjKs2GAcStU6JZeFiFFoUEzv7W6sWWpdtT8eCmwE00Fx9aKmj0";
+const stripePromise = loadStripe(PUBLIC_KEY);
+
 
 const CheckoutSidebar = ({ cartData }) => {
     const { data, totalPrice } = cartData;
@@ -33,15 +41,13 @@ const CheckoutSidebar = ({ cartData }) => {
                     <span>{totalPrice}</span>
                 </div>
 
+                <div>
+                    <Elements stripe={stripePromise}>
+                        <StripePayment />
+                    </Elements>
+                </div>
 
-            </div>
-            <div className="p-3 mt-5">
-                <p>
-                    Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.
-                </p>
-            </div>
-            <div className="flex items-center justify-center [&>*:nth-child(n)]:w-full mt-10">
-                <SubmitBtn>Place Order</SubmitBtn>
+
             </div>
         </div>
     );

@@ -41,7 +41,7 @@ const Course = () => {
                                     <h5 className='text-xl font-bold'>Category: {data.category}</h5>
                                     <h6 className='font-bold'>Avilable Sit: {data.sitNumber}</h6>
                                     <p className='text-2xl font-bold'>Price: {data?.sellPrice} <del >${data?.price}</del></p>
-                                    {isExistItem? <button className='btn'>Remove From Cart</button> : <AddToCartBtn useFackDb={useFackDb} data={data}>Add To cart</AddToCartBtn>}
+                                     <AddToCartBtn useFackDb={useFackDb} data={data}>Add To cart</AddToCartBtn>
                                     
                                 </div>
                             </div>
