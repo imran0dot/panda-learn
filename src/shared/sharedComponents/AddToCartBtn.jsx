@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { getDataFromStore, useFackDb, handleDelete,existItem } from "../../Hooks/useFackDb";
-import { toast } from "react-hot-toast";
+import { useFackDb, handleDelete,existItem } from "../../Hooks/useFackDb";
 import { useEffect } from "react";
 
 const AddToCartBtn = ({ data, children }) => {

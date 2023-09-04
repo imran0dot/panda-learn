@@ -33,18 +33,27 @@ const useFackDb = (id) => {
     localStorage.setItem("cartItems", JSON.stringify(storedItems))
 }
 
-const handleDelete = (id) => {
+const handleDelete = async (id) => {
     let storedItems = getDataFromStore();
     let newArray = [];
-    const getItem = storedItems.find(item => item === id);
-    if(getItem){
-        for(const id of storedItems){
-            if(id !== getItem){
-                newArray.push(id);
+
+    try {
+        return new Promise ((resolve, reject) => {
+            const getItem = storedItems.find(item => item === id);
+            if(getItem){
+                for(const id of storedItems){
+                    if(id !== getItem){
+                        newArray.push(id);
+                    }
+                }
+                localStorage.setItem("cartItems", JSON.stringify(newArray));
+                toast("Removed From the cart");
+                resolve(true);
             }
-        }
-        localStorage.setItem("cartItems", JSON.stringify(newArray));
-        toast.error("Removed From the cart")
+        })
+
+    } catch(err) {
+        toast.error("somthing went wrong")
     }
 
 }

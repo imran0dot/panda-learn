@@ -29,7 +29,7 @@ const Courses = () => {
                 <Fixedwidth>
                     <div>
                         <Title title="We Provide Best Video for lerning" subTitle="Have a look at your perfect solution" align="center" />
-                        <div className="grid grid-cols-4 gap-5">
+                        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5">
                             {
                                 classes?.map((singleCourse, index) => {
                                     return <ClassBox key={index} singleCourse={singleCourse} />
