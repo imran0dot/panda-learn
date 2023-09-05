@@ -15,7 +15,7 @@ const queryClient = new QueryClient()
 
 
 // axios.defaults.baseURL = "https://test-server-detectiveseo.vercel.app/";
-axios.defaults.baseURL = "http://localhost:3300/";
+axios.defaults.baseURL = "https://test-server-detectiveseo.vercel.app/";
 axios.interceptors.request.use((req) => {
   req.headers.Authorization = `Bearer ${localStorage.getItem("verify_token")}`
   return req

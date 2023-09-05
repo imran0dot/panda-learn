@@ -9,9 +9,10 @@ const Instructor = () => {
     const [data, setData] = useState([]);
     const [classes, setClasses] = useState([]);
     const { id } = useParams();
-    
-    useClasses().then(res => setClasses(res));
+
+
     useEffect(() => {
+        useClasses().then(res => setClasses(res));
         axios(`/instructor/${id}`).then(res => setData(res.data[0]));
     }, [])
     return (
@@ -26,11 +27,11 @@ const Instructor = () => {
                 <h3 className="text-3xl font-bold">My Classes:- </h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {
-                        classes?.map((singleCourse,i) => {
+                        classes?.map((singleCourse, i) => {
                             return (
-                                <ClassBox 
-                                singleCourse={singleCourse}
-                                image={data.image} key={i} />
+                                <ClassBox
+                                    singleCourse={singleCourse}
+                                    image={data.image} key={i} />
                             )
                         })
                     }

@@ -8,7 +8,6 @@ import { useEffect } from "react";
 const Cart = () => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([])
-    console.log(data);
     const [totalPrice, setTotalPrice] = useState(0);
     const cart = useCart()
     useEffect(() => {
@@ -26,8 +25,6 @@ const Cart = () => {
         }
         });
     }
-
-
     return (
         <div>
             <Fixedwidth>

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useClasses from "../../Hooks/useClasses";
 
 const AllCourses = () => {
     const [classes, setClasses] = useState([])
-    useClasses().then(res => setClasses(res))
+    useEffect(() => {
+        useClasses().then(res => setClasses(res))
+    }, [])
     return (
         <div>
             <div className="overflow-x-auto">
@@ -25,7 +27,7 @@ const AllCourses = () => {
                     <tbody>
                         {
                             classes.map((items, index) => {
-                                const {category, instructior, name, price, sellPrice, sitNumber, image} = items;
+                                const { category, instructior, name, price, sellPrice, sitNumber, image } = items;
                                 return (
                                     <tr key={items._id}>
                                         <th>{index + 1}</th>

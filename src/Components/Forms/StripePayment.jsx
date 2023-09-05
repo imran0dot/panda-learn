@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const StripePayment = ({ data }) => {
     const [loading, setLoading] = useState(false);
+    const [isDisable, setIsDisable] = useState(false)
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
@@ -19,6 +20,9 @@ const StripePayment = ({ data }) => {
 
     useEffect(() => {
         const amount = +data?.totalPrice;
+        if(amount <= 0){
+            setIsDisable(true);
+        }
         if (amount) {
             axios.post("/payments", {
                 amount,
@@ -106,7 +110,7 @@ const StripePayment = ({ data }) => {
                 </p>
             </div>
             <div className="flex items-center justify-center [&>*:nth-child(n)]:w-full mt-10">
-                <SubmitBtn loading={loading}>Place Order</SubmitBtn>
+                <SubmitBtn loading={loading} isDisable={isDisable}>Place Order</SubmitBtn>
             </div>
         </form>
     );
