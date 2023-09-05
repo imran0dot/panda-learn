@@ -19,8 +19,18 @@ const PopularInstractor = () => {
             <Fixedwidth>
                 <Title title="Popular Instructors" subTitle="Panda Learning plateform is knows for best instractor" align="center" />
                 <Swiper
+                breakpoints={{
+                    320: {
+                      slidesPerView: 1.1
+                    },
+                    480: {
+                      slidesPerView: 2.1
+                    },
+                    768: {
+                      slidesPerView: 3.1
+                    }
+                  }}
                     loop={true}
-                    slidesPerView={3}
                     spaceBetween={30}
                     pagination={{
                         clickable: true,

@@ -1,37 +1,73 @@
 import { useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import SubmitBtn from '../../shared/sharedComponents/SubmitBtn';
 import { useEffect } from 'react';
+import useAuth from '../../Hooks/useAuth';
+import { toast } from 'react-hot-toast';
+import { getDataFromStore } from '../../Hooks/useFackDb';
 
-const StripePayment = () => {
+const StripePayment = ({ data }) => {
     const stripe = useStripe();
     const elements = useElements();
+    const { user } = useAuth();
+    const cart = getDataFromStore();
+    const [key, setKey] = useState("")
 
     useEffect(() => {
-        const responce = axios.post("/payments", {
-            amount: 20000,
-        })
-        console.log(responce);
-    }, [])
+        const amount = +data?.totalPrice;
+        if (amount) {
+            axios.post("/payments", {
+                amount,
+            }).then(res => setKey(res.data.clientSecret));
+        }
+    }, [data])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("clicked")
+
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement)
         })
+
+
         if (!stripe || !elements) {
             return;
         }
         if (error) {
             console.log('[error]', error);
-          } else {
+        } else {
             console.log('[PaymentMethod]', paymentMethod);
-          }
-    };
+        }
+
+        // Confirm payment
+        const { paymentIntent, error: confirmPaymentError } = await stripe.confirmCardPayment(key, {
+            payment_method: {
+                card: elements.getElement(CardElement),
+                billing_details: {
+                    name: user?.displayName || "Unknown",
+                    email: user?.email || "Unknown email",
+                },
+            },
+        })
+
+        if (paymentIntent?.status == "succeeded") {
+            const paymentInfo = {
+                name: user?.displayName,
+                email: user?.email,
+                items: cart,
+                amount: paymentIntent.amount,
+                currency: paymentIntent.currency,
+                paymentId: paymentIntent.id,
+                status: paymentIntent.status,
+            }
+            toast.success("payment success")
+            console.log(paymentInfo);
+        } else {
+            console.log(confirmPaymentError)
+        }
+    }
 
     const CARD_OPTIONS = {
         style: {

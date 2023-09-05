@@ -43,7 +43,7 @@ const Features = () => {
             <Fixedwidth>
                 <Title title="Features" subTitle="Our primary objective is to provide professional guidance to students in order to facilitate their optimal learning experience." align="center" />
 
-                <div className='grid grid-cols-3 gap-20 py-10'>
+                <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-20 py-10'>
                     {
                         boxInfo.map((box, index) =>
                             <div key={index} className='flex gap-2 items-center'>
