@@ -6,12 +6,15 @@ import { useEffect } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import { getDataFromStore } from '../../Hooks/useFackDb';
+import { useNavigate } from "react-router-dom";
 
 const StripePayment = ({ data }) => {
+    const [loading, setLoading] = useState(false);
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useAuth();
     const cart = getDataFromStore();
+    const navigate = useNavigate();
     const [key, setKey] = useState("")
 
     useEffect(() => {
@@ -25,6 +28,7 @@ const StripePayment = ({ data }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
@@ -33,10 +37,11 @@ const StripePayment = ({ data }) => {
 
 
         if (!stripe || !elements) {
+              setLoading(false);
             return;
         }
         if (error) {
-            console.log('[error]', error);
+           toast.error(error);
         } else {
             console.log('[PaymentMethod]', paymentMethod);
         }
@@ -62,10 +67,18 @@ const StripePayment = ({ data }) => {
                 paymentId: paymentIntent.id,
                 status: paymentIntent.status,
             }
-            toast.success("payment success")
-            console.log(paymentInfo);
+            axios.post("/add-payment", {paymentInfo}).then(res => 
+                {
+                    console.log(res);
+                    if(res.data.acknowledged === true){
+                        toast.success("payment success full");
+                        navigate("/");
+                        localStorage.removeItem("cartItems");
+                        setLoading(false);
+                    }
+                })
         } else {
-            console.log(confirmPaymentError)
+           toast.error(confirmPaymentError)
         }
     }
 
@@ -93,7 +106,7 @@ const StripePayment = ({ data }) => {
                 </p>
             </div>
             <div className="flex items-center justify-center [&>*:nth-child(n)]:w-full mt-10">
-                <SubmitBtn>Place Order</SubmitBtn>
+                <SubmitBtn loading={loading}>Place Order</SubmitBtn>
             </div>
         </form>
     );
