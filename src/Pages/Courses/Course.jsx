@@ -15,6 +15,9 @@ const Course = () => {
     
 
     useEffect(() => {
+        axios("/paid-courses",).then(res => {
+            console.log(res.data);
+        }).catch(err => console.log("hello"))
         axios(url)
             .then(res => {
                 setData(res.data);
