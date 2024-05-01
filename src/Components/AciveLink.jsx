@@ -5,7 +5,7 @@ const AciveLink = ({to, children}) => {
         <NavLink
             to={to}
             className={({ isActive, isPending }) =>
-                isPending ? "pending" : isActive ? " underline" : "" }>
+                isPending ? "pending" : isActive ? "capitalize text-lg font-semibold text-slate-500 border-b-4  border-[#00988A] py-4 px-3" : "capitalize text-lg font-semibold text-slate-500 py-3" } >
             {children}
         </NavLink>
     );

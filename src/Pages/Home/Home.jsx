@@ -7,15 +7,15 @@ import Features from '../../Components/HomeComponents/Features';
 
 const Home = () => {
     return (
-        <div>
-            <Hero />
-            <PopularClasses />
-            <PopularInstractor />
-            <Info />
-            <Features />
-            <Review />
-        </div>
-    );
+            <div>
+                <Hero />
+                <PopularClasses />
+                <PopularInstractor />
+                <Info />
+                <Features />
+                <Review />
+            </div>
+            );
 };
 
-export default Home;
+            export default Home;

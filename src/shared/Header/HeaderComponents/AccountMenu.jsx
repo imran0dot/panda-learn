@@ -34,7 +34,7 @@ const AccountMenu = () => {
                                 </Link>
                             </div>
                         </div>
-                    </div> : <Link to="/login" className='btn btn-outline rounded-full'>Login</Link>
+                    </div> : <Link to="/login" className='btn btn-outline rounded-lg px-10 py-3 bg-[#00988A] text-white'>Login</Link>
             }
         </div>
     );
